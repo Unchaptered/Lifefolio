@@ -1,0 +1,61 @@
+/* contains
+  1. change.scss
+  2. link.scss
+ */
+
+@import "../config/_mixin";
+@import "../config/_variables";
+
+.form__access {
+  padding: 20px 40px 20px 25px;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+
+  @include contentBorder;
+  @include standardTrnasition;
+  & > .access__inner {
+    width: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > label {
+      width: auto;
+      min-width: 80px;
+      margin-left: 10px;
+
+      display: flex;
+      @include contentFont;
+      @include standardTrnasition;
+    }
+    & > div {
+      display: flex;
+      flex-direction: column;
+    }
+    input {
+      width: 200px;
+      @include contentInput;
+      @include standardTrnasition;
+    }
+    & > select {
+      width: 210px;
+    }
+  }
+  & > .access__title {
+    padding: 10px;
+    font-size: 20px;
+  }
+  & > .access__create {
+    display: flex;
+    justify-content: center;
+    & > input {
+      font-size: 14px;
+      border: initial;
+      background-color: initial;
+      @include standardTrnasition;
+    }
+  }
+}

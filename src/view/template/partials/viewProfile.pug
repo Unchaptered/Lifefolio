@@ -1,0 +1,17 @@
+
+div.form__access
+    div.form__folio
+        //- grid display
+        div.folio__shortcut
+            span 이미지
+        div.folio__master
+            a(href=`/user/profile/${folioDB.master}`)  크리에이터 #{folioDB.masterName}
+        div.folio__name
+            a(href=`/folio/${folioDB._id}`)  포트폴리오 #{folioDB.folioName}
+        div.folio__description     
+            if String(folioDB.folioDescription) !== ""
+                span.description__innerSpan=folioDB.folioDescription
+            else
+                span.description__innerSpan
+        div.folio__created
+            span=folioDB.folioCreated

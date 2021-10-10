@@ -1,0 +1,36 @@
+@import "../config/_mixin";
+
+#navTop {
+  // Height 40px;
+  position: fixed;
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 40px;
+  padding: 0 8px;
+
+  background-color: $back;
+  & > a {
+    @include resetA;
+  }
+  & > button {
+    @include resetBtn;
+  }
+  & > a,
+  & > button {
+    width: 30px;
+    @include flexCenterCenter;
+    & > svg {
+      @include standardButtonSVG;
+      @include standardTrnasition;
+      width: 20px;
+      height: 30px;
+    }
+    &:hover {
+      & > svg {
+        @include standardHover;
+      }
+    }
+  }
+}

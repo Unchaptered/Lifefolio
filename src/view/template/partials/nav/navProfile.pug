@@ -1,0 +1,121 @@
+if loggedInUser
+    nav.navProfile.control__display-none
+        div
+            a(href=`/user/profile/${loggedInUser._id}`).navProfile__img
+                button  이미지
+        div
+            a(href=`/user/profile/${loggedInUser._id}`).navProfile__username
+                case loggedInUser.major
+                    when 0 : button #{loggedInUser.username}  만화,애니
+                    when 1 : button #{loggedInUser.username}  일러스트
+                    when 2 : button #{loggedInUser.username}  포토
+                    when 3 : button #{loggedInUser.username}  화가
+                    when 4 : button #{loggedInUser.username}  조각가
+                    when 5 : button #{loggedInUser.username}  수공예
+                    when 6 : button #{loggedInUser.username}  폰트
+                    when 7 : button #{loggedInUser.username}  그래픽
+                    when 8 : button #{loggedInUser.username}  출판 편집
+                    when 9 : button #{loggedInUser.username}  광고 시각
+                    when 10 : button #{loggedInUser.username}  의류 패션
+                    when 11 : button #{loggedInUser.username}  잡화 제품
+                    when 12 : button #{loggedInUser.username}  전시 공간
+                    when 13 : button #{loggedInUser.username}  웹
+                    when 14 : button #{loggedInUser.username}  영상
+                    when 15 : button #{loggedInUser.username}  미분류
+            br
+            a(href=`/user/profile/${loggedInUser._id}`).navProfile__status
+                case loggedInUser.statusNow
+                    when 0: button 구경 중
+                    when 1: button 공부 중
+                    when 2: button 구직 중
+                    when 3: button 외주 중
+        div
+            a(href=`/user/profile/${loggedInUser._id}`).navProfile__follower
+                button 팔로워 #{loggedInUser.followed}
+            br
+            a(href=`/user/profile/${loggedInUser._id}`).navProfile__follwed
+                button 팔로잉 #{loggedInUser.following}
+        div
+            a(href=`/user/profile/${loggedInUser._id}/edit-profile`).navProfile__modify
+                button 정보수정
+            br
+            a(href="/user/logout").navProfile__logout
+                button 로그아웃
+else if loggedInAdmin
+    nav.navProfile.control__display-none
+        div
+            a(href=`/admin/profile/${loggedInAdmin._id}`).navProfile__img
+                button  이미지
+        div
+            a(href=`/admin/profile/${loggedInAdmin._id}`).navProfile__username
+                button 닉네임 #{loggedInAdmin.username} / 관리자 계정
+            br
+            a(href=`/admin/profile/${loggedInAdmin._id}`).navProfile__status
+                button 현재상태
+        div
+            a(href=`/admin/profile/${loggedInAdmin._id}`).navProfile__follower
+                button 팔로워 #{loggedInAdmin.followed}
+            br
+            a(href=`/admin/profile/${loggedInAdmin._id}`).navProfile__follwed
+                button 팔로잉 #{loggedInAdmin.following}
+        div
+            a(href=`/admin/profile/${loggedInAdmin._id}/edit-profile`).navProfile__modify
+                button 정보수정
+            br
+            a(href="/admin/logout").navProfile__logout
+                button 로그아웃
+else if loggedInCompany
+    nav.navProfile.control__display-none
+        div
+            a(href=`/company/profile/${loggedInCompany._id}`).navProfile__img
+                button  이미지
+        div
+            a(href=`/company/profile/${loggedInCompany._id}`).navProfile__username
+                button 닉네임 #{loggedInCompany.username} / 관리자 계정
+            br
+            a(href=`/company/profile/${loggedInCompany._id}`).navProfile__status
+                button 현재상태
+        div
+            a(href=`/company/profile/${loggedInCompany._id}`).navProfile__follower
+                button 팔로워 #{loggedInCompany.followed}
+            br
+            a(href=`/company/profile/${loggedInCompany._id}`).navProfile__follwed
+                button 팔로잉 #{loggedInCompany.following}
+        div
+            a(href=`/company/profile/${loggedInCompany._id}/edit-profile`).navProfile__modify
+                button 정보수정
+            br
+            a(href="/company/logout").navProfile__logout
+                button 로그아웃
+else
+    nav.navProfile.control__display-none
+        div
+            a(href="/user/login").navProfile__img
+                button  이미지
+        div
+            a(href="/user/login").navProfile__username
+                button 게스트 / -
+            br
+            a(href="/user/login").navProfile__status
+                button 게스트 홛롱
+        div
+            a(href="/user/login").navProfile__follower
+                button 팔로워 -
+            br
+            a(href="/user/login").navProfile__follwed
+                button 팔로잉 -
+        div
+            a(href="/user/login").navProfile__modify
+                button 로그인
+            br
+            a(href="/user/join").navProfile__logout
+                button 회원가입
+
+nav.navProfileBtn
+    svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor")
+        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 11l3-3m0 0l3 3m-3-3v8m0-13a9 9 0 110 18 9 9 0 010-18z")
+    svg(xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor").navProfileBtn__left
+        path(stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z")
+    svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor").navProfileBtn__right.control__display-none
+        path(fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd")
+    script(src="/static/js/navProfile.js")

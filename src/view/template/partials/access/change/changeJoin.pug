@@ -1,0 +1,23 @@
+form.changeJoin
+    case Title
+        when "회원가입"
+            //- a(href="/user/login") 일반 계정 로그인
+            button 일반 계정
+            a(href="/admin/join") 관리자
+            a(href="/company/join") 사업자
+
+        when "관리자 가입"
+            //- a(href="/admin/login") 관리자 로그인 
+            a(href="/user/join") 일반 계정
+            button 관리자
+            a(href="/company/join") 사업자
+
+        when "비즈니스 가입"
+            //- a(href="/company/login") 비즈니스 계정 로그인 &rarr;
+            a(href="/user/join") 일반 계정
+            a(href="/admin/join") 관리자
+            button 사업자
+
+        default
+            br
+            span 새로고침해주세요

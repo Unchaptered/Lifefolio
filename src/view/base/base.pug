@@ -1,0 +1,35 @@
+doctype html
+html(lang="kr")
+    head
+        title #{Title} / Life Folio
+        //- link(rel="stylesheet" href="https://unpkg.com/mvp.css")
+        link(rel="stylesheet" href="/static/css/styles.css")
+
+    body
+        include ../template/partials/nav/navTop.pug
+
+        header#header
+            if addTitle
+                if userDB
+                    a(href="/").header__Subtitle Life Folio
+                    span.header__Title #{userDB.username}
+                else if folioDB
+                    a(href="/").header__Subtitle Life Folio
+                    span.header__Title #{folioDB.folioName}
+            else
+                a(href="/").header__Title Life Folio
+
+            if Message
+                span.header_Message #{Message}
+            else
+                span.header__Error 서버 오류
+
+        //- main 컨텐츠 박스
+        main#main
+            if error
+                span.main__Error=error
+            block content
+        
+        include ../template/partials/nav/navProfile.pug
+
+    script(src="/static/js/test.js")

@@ -1,0 +1,18 @@
+@import "../../config/_mixin";
+@import "../../config/_variables";
+
+.linkJoin,
+.linkLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > a {
+    margin: 10px;
+    @include resetA;
+  }
+  & > span {
+    @include errorSpan;
+    @include flexCenterCenter;
+  }
+}

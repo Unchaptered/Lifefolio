@@ -1,0 +1,13 @@
+@import "../config/_mixin";
+@import "../config/_variables";
+
+.changeSearch {
+  @include flexCenterCenter;
+
+  & > button {
+    @include resetBtn;
+
+    margin: 10px;
+    font-size: 16px;
+  }
+}

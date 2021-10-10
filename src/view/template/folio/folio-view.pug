@@ -1,0 +1,32 @@
+extends ../../base/base.pug
+include ../mixins/userFolioImage.pug
+
+block content 
+    include ../partials/viewProfile
+    
+    div.form__content-grid
+        div.form__content
+            div
+                div.folio__imageDiv
+                    if folioDB.folioImageArray===null
+                        //- span folioIMageDB 가 없음
+                        span 이미지 파일이 없습니다.
+                        if loggedIn
+                            if loggedInUser._id===String(folioDB.master)
+                                button.imageUploadBtn 추가하기
+                            else
+                                span.imageUploadBtn
+                        else 
+                            span.imageUploadBtn
+                    else
+                        each folioImage in folioDB.folioImageArray
+                            +folioImage(folioImage)
+                        else
+                            span 하이
+                form(method="POST") 
+                    div.folio__imageUpload.control__display-none
+                        input.imageUploadTarget(name="target", type="text", placeholder="이미지 제목을 입력하세요")
+                        input.imageUploadSubmit(name="submit", type="submit", value="이미지 업로드")
+                        button.imageUploadCancel 취소하기
+
+    script(src="/static/js/folio.js")

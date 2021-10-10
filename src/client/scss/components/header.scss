@@ -1,0 +1,35 @@
+#header {
+  padding-top: 40px;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  //   background-color: aqua;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  & > .header__Title {
+    @include resetA;
+    @include standardTrnasition;
+
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    // background-color: red;
+    &:hover {
+      @include standardHover;
+    }
+  }
+  & > .header_Message {
+  }
+  & > .header__Error {
+    @include errorSpan;
+  }
+  & > .header__Subtitle {
+    @include resetA;
+    @include standardTrnasition;
+    &:hover {
+      @include standardHover;
+    }
+  }
+}

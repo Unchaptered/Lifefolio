@@ -1,0 +1,29 @@
+extends ../../base/base.pug
+
+block content
+    include ../partials/access/change/changeJoin.pug
+    form(method="POST").form__access
+        span.access__inner.access__title #{Title}
+        div.access__inner
+            label(for="username") 이름
+            input(name="username",type="text", placeholder="유저 이름", required, value=username)
+        div.access__inner
+            label(for="email") 이메일
+            input(name="email",type="email", placeholder="이메일", required, value=email)
+        div.access__inner
+            label(for="password") 비밀번호
+            div
+                input(name="password",type="password", placeholder="비밀번호", required)
+                input(name="password2",type="password", placeholder="비밀번호 확인", required)
+        div.access__inner
+            include ../partials/access/select/selectMajor.pug
+        div.access__inner
+            label(for="age") 나이
+            input(name="age", type="number", min=1, placeholder="나이", required, value=age)
+        div.access__inner
+            include ../partials/access/select/selectStatus.pug
+
+        div.access__create
+            input(name="create", type="submit", value="계정 생성")
+
+    include ../partials/access/link/linkJoin.pug

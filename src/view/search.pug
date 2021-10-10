@@ -1,0 +1,63 @@
+extends base/base.pug
+include template/mixins/userProfile
+include template/mixins/userFolio
+
+block content 
+    include ./template/partials/access/change/changeSearch.pug
+
+    form(method="POST").form__access
+        //- flex displayCenterCenter
+        div.form__search
+            //- width
+            div.conditions__user
+                //- flex display
+                div.conditions__user-grid
+                    //- grid diplay
+                    span.conditions__title 유저 검색을 위한 설정값
+                    include ./template/partials/access/select/selectMajor.pug
+                    include ./template/partials/access/select/selectStatus.pug
+                    label.conditions__label(for="searchNameUser") 검색 문구
+                    input.conditions__input(name="searchNameUser", type="text", placeholder="검색 문구")#search__input__text
+                    input.conditions__submit(name="search", type="submit", value="user")
+
+            div.conditions__folio.control__display-none
+                div.conditions__folio-grid
+                    span.conditions__title 포트폴리오 검색을 위한 설정값
+                    label.conditions__label(for="searchNameFolio") 검색 문구
+                    input.conditions__input(name="searchNameFolio", type="text", placeholder="검색 문구")#search__input__text
+                    input.conditions__submit(name="search", type="submit", value="folio")
+
+            div.conditions__image.control__display-none
+                div.conditions__image-grid
+                    span.conditions__title 단일이미지 검색을 위한 설정값
+                    label.conditions__label(for="searchNameFolioImage") 검색 문구
+                    input.conditions__input(name="searchNameFolioImage", type="text", placeholder="검색 문구")#search__input__text
+                    input.conditions__submit(name="search", type="submit", value="folioImage")
+                    
+    case conditions__target
+        when "user"
+            div.form__content-grid
+                each user in userDB
+                    +user(user)
+                else
+                    span 검색 결과가 없습니다.
+        when "folio"
+            div.form__content-grid
+                    each folio in folioDB
+                        +folio(folio)
+                    else
+                        span 검색 결과가 없습니다.
+        when "folioImage"
+            div.form__content-grid
+                div.form__content
+                    span 검색 결과가 없습니다.
+
+    script(src="/static/js/search.js")
+
+
+    //- mixins User
+    //- div.form__content
+    //-     each user in userDB
+    //-         +user(user)
+    //-     else
+    //-         span 검색 결과가 없습니다.

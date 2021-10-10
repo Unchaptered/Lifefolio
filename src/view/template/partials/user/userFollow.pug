@@ -1,0 +1,10 @@
+div.userMeta__Follow
+    span 팔로잉 #{userDB.followed} 
+    span 팔로워 #{userDB.following} 
+    if loggedIn
+        if loggedInUser._id!==String(userDB._id)
+            strong.following 팔로잉하기
+        else
+            span.following
+    else
+        a(href="/user/login") 팔로잉하기

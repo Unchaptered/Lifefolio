@@ -1,0 +1,48 @@
+mixin folio(folio)
+    div.form__content
+        div.form__folio
+            //- grid display
+            div.folio__shortcut
+                span 이미지
+            div.folio__master
+                a(href=`/user/profile/${folio.master}`)  크리에이터 #{folio.masterName}
+            div.folio__name
+                a(href=`/folio/${folio._id}`)  포트폴리오 #{folio.folioName}
+            div.folio__description     
+                if String(folio.folioDescription) !== ""
+                    span.description__innerSpan=folio.folioDescription
+                else
+                    span.description__innerSpan
+            div.folio__created
+                span=folio.folioCreated
+
+            div.folio__images
+                span 파일리스트
+                div
+                    //- flex
+                    if loggedIn
+                        if loggedInUser._id===String(folio.master)
+                            if String(folio.folioImage) === ""
+                                div
+                                    //- grid (가로축 확장형)
+                                    span 이미지 파일 없음
+                                a(href=`/folio/${folio._id}/uploadImage`) 추가 업로드
+                            else
+                                div
+                                    //- grid (가로축 확장형)
+                                    span 이미지 파일 있음
+                                a(href=`/folio/${folio._id}/uploadImage`) 추가 업로드
+                        else
+                            if String(folio.folioImage) === ""
+                                div
+                                    span 이미지 파일 없음
+                            else
+                                div
+                                    span 이미지 파일 있음
+                    else
+                        if String(folio.folioImage) === ""
+                            div
+                                span 이미지 파일 없음
+                        else
+                            div
+                                span 이미지 파일 있음

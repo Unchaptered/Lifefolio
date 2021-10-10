@@ -1,0 +1,104 @@
+@import "../config/_mixin";
+@import "../config/_variables";
+
+.form__search {
+  // grid
+  & > .conditions__user {
+    .conditions__user-grid {
+      display: grid;
+      grid-template: repeat(5, minmax(10px, auto)) / repeat(
+          4,
+          minmax(10px, 1fr)
+        );
+
+      gap: 0 10px;
+
+      & > .conditions__title {
+        grid-row: 1/2;
+        grid-column: 1/-1;
+      }
+      & > .selectMajor__label,
+      & > .selectStatus__label,
+      & > .conditions__label {
+        grid-column: 1/2;
+      }
+      & > .selectMajor__select,
+      & > .selectStatus__select,
+      & > .conditions__input {
+        grid-column: 2/-1;
+      }
+      & > .conditions__submit {
+        grid-column: 2/4;
+      }
+    }
+  }
+  & > .conditions__folio {
+    .conditions__folio-grid {
+      display: grid;
+      grid-template: repeat(5, minmax(10px, auto)) / repeat(
+          4,
+          minmax(10px, 1fr)
+        );
+      gap: 0 10px;
+      & > .conditions__title {
+        grid-column: 1/-1;
+      }
+      & > .conditions__label {
+        grid-column: 1/2;
+      }
+      & > .conditions__input {
+        grid-column: 2/-1;
+      }
+      & > .conditions__submit {
+        grid-column: 2/4;
+      }
+    }
+  }
+  & > .conditions__image {
+    .conditions__image-grid {
+      display: grid;
+      grid-template: repeat(5, minmax(10px, auto)) / repeat(
+          4,
+          minmax(10px, 1fr)
+        );
+      gap: 0 10px;
+      & > .conditions__title {
+        grid-column: 1/-1;
+      }
+      & > .conditions__label {
+        grid-column: 1/2;
+      }
+      & > .conditions__input {
+        grid-column: 2/-1;
+      }
+      & > .conditions__submit {
+        grid-column: 2/4;
+      }
+    }
+  }
+  // design
+  .conditions__title {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  .conditions__submit {
+    margin-top: 10px;
+  }
+  .selectMajor__label,
+  .selectStatus__label,
+  .conditions__label {
+    text-align: right;
+  }
+
+  // @media screen and (max-width: 1000px) {
+  //   background-color: rgb(186, 186, 209);
+  // }
+  // @media screen and (max-width: 500px) {
+  //   background-color: rgb(218, 204, 179);
+  // }
+}
+// conditions__title
+// conditions__label
+// conditions__input
+// conditions__submit

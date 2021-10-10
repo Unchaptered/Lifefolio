@@ -1,0 +1,26 @@
+/* media query (screen) 을 3단게로 분류
+    Narrow << 이 기준으로 제작
+    Normal
+    Wide
+*/
+/* body
+        navTop
+        header
+        main
+        navPorfile
+*/
+
+// ContentSize
+$back: white;
+$font: black;
+$modfiy: rgb(50, 50, 221);
+$error: rgb(97, 97, 195);
+
+$min-width__narrow: 40%;
+$width__narrow: 400px;
+$padding__narrow: 15px;
+
+$navTop_fontSize: 18px;
+$navTOp_svgSize: 18px;
+
+$hoverColor: rgb(158, 81, 81);

@@ -1,0 +1,30 @@
+//- 외곽선 미포함
+div.form__folio
+    // position relative
+    // width auto, auto ...
+    // display flex center center
+    a(href=`/user/profile/${folio.maseter}`) 
+        div.f_fol__shortcut
+            // position initial
+            // width 100%, height 100% ...
+            // display flex center center
+            // image cover
+            span 이미지
+    div.f_fol__meta
+        // position absolute
+        // width auto, heogjt auto ...
+        // display grid temaplte 2x3
+        div.f_fol__meta__neccessary
+            // position initial
+            // width auto, height auto ...
+            // content ::: text-alint left
+            div.f_fol__creater=folio.masterName
+            div.f_fol__title=folio.folioName
+            div.f_fol__created=folio.folioCreated
+        div.f_fol__meta__unneccessary
+            // width auto, heigth auto ...
+            //  content :: text-align right
+            if String(folio.folioDescription)!==""
+                div.f_fol__description=folio.folioDescription
+            else 
+                div.f_fol__description 이미지 없음

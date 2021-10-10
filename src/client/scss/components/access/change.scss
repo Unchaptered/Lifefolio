@@ -1,0 +1,20 @@
+@import "../../config/_mixin";
+@import "../../config/_variables";
+
+.changeLogin,
+.changeJoin {
+  @include flexCenterCenter;
+  & > button,
+  & > a {
+    margin: 10px;
+  }
+  & > button {
+    font-size: 16px;
+    font-weight: 600;
+    @include resetBtn;
+  }
+  & > a {
+    font-size: 16px;
+    @include resetA;
+  }
+}

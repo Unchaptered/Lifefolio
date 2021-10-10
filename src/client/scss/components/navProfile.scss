@@ -1,0 +1,39 @@
+.navProfile {
+  position: fixed;
+  bottom: 0;
+  right: 30px;
+
+  width: auto;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: $back;
+  & > div {
+    & > a {
+      & > img {
+        width: 30px;
+      }
+      & > button {
+        font-size: 15px;
+        border: initial;
+        background-color: initial;
+      }
+    }
+  }
+}
+$width: 30px;
+.navProfileBtn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+
+  width: $width;
+  height: $width * 2;
+  display: flex;
+  flex-direction: column;
+  background-color: $back;
+  & > svg {
+    width: $width;
+  }
+}

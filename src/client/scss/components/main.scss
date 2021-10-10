@@ -1,0 +1,26 @@
+// Responsive Settings
+@import "../config/mixin";
+
+#main {
+  // background-color: rgb(228, 197, 197);
+  padding: 40px 100px;
+  display: flex;
+  flex-direction: column;
+
+  @include standardTrnasition;
+  @media screen and (max-width: 1000px) {
+    // background-color: rgb(186, 186, 209);
+
+    padding: 30px 50px;
+  }
+  @media screen and (max-width: 500px) {
+    // background-color: rgb(218, 204, 179);
+
+    padding: 20px;
+  }
+
+  & > span {
+    @include errorSpan;
+    @include flexCenterCenter;
+  }
+}
