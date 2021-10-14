@@ -41,5 +41,7 @@ app.use("/company",companyRouter);
 app.use("/folio",folioRouter);
 // Frontend
 app.use("/static", express.static("assets"));
+// Uploads Files
+app.use("/uploads", express.static("uploads"));
 
 export default app;

@@ -1,5 +1,8 @@
-import folioModel from "../model/folio/folioModel";
+import helpObj from "../class/helpObject";
+import pageObj from "../class/pageObject";
+
 import userModel from "../model/account/userModel";
+import folioModel from "../model/folio/folioModel";
 
 const renSetup=[
     {
@@ -24,22 +27,52 @@ export const uploadGet=(req,res)=>{
     });
 };
 
+/* 경우의 수
+    Cover Upload
+    Cover Not Upload
+*/
 export const uploadPost=async(req,res)=>{
-    const {
-        session: { user: { _id } },
-        body: { folioName, folioDescription }
-    }=req;
+    try{
+        const {
+            session:{ user:{ _id } },
+            body: { folioName, folioDescription }
+        }=req;
 
-    const userDB=await userModel.findById({_id});
+        const userDB=await userModel.findById({_id});
 
-    const folioDB=await folioModel.create({
-        folioName, folioDescription,
-        master:_id, masterName:userDB.username
-    });
+        let folioDB;
+        if(req.file===undefined){
+            // console.log("file is undefined");
+            folioDB=await folioModel.create({
+                // Baisc Data
+                folioName,
+                // Meta Data
+                folioDescription, 
+                // Master(owner) Data
+                master:_id,
+                masterName:userDB.username
+            })
+        } else {
+            // console.log("file isn't undefined");
+            const{ path:shortcutUrl }=req.file;
+            folioDB=await folioModel.create({
+                // Baisc Data
+                folioName,
+                shortcutUrl,
+                shortcutView:true,
+                // Meta Data
+                folioDescription, 
+                // Master(owner) Data
+                master:_id,
+                masterName:userDB.username
+            });
+        }
+        userDB.folioArray.push(folioDB._id);
+        userDB.folioNameArray.push(folioDB.folioName);
+        await userDB.save();
 
-    userDB.folioArray.push(folioDB._id);
-    userDB.folioNameArray.push(folioDB.folioName);
-    userDB.save();
-
-    return res.redirect(`/user/profile/${_id}`);
+        return res.redirect(`/user/profile/${_id}`);
+    } catch(error){
+        return res.redirect("/");
+    };
 };

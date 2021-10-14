@@ -4,13 +4,13 @@ div.userSNS
         if loggedIn
             if loggedInUser._id===String(userDB._id)
                 if !loggedInUser.associated
-                    button 연동 추가하기
+                    button(type="button") 연동 추가하기
                 else
-                    button 연동 수정하기
+                    button(type="button") 연동 수정하기
             else
                 span.nothing
         else
-            span.nothing gg
+            span.nothing
     if !userDB.associated
         div.userSNS__Naver
             i NAV 

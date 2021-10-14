@@ -1,0 +1,75 @@
+.form__access2 {
+  font-size: 16px;
+  width: auto;
+  height: auto;
+  @include flexCenterCenter;
+  @include contentPadding;
+  @include contentBorder;
+  align-self: center;
+
+  //   background-color: rgb(216, 182, 182);
+  .access__edit-basic,
+  .access__edit-password {
+    // background-color: rgb(188, 188, 224);
+    min-width: 300px;
+    width: 70%;
+    max-width: 600px;
+
+    display: grid;
+    gap: 10px;
+    grid-template: repeat(3, minmax(10px, 1fr)) / repeat(4, 1fr);
+    & > a {
+      @include flexCenterCenter;
+      @include resetA;
+    }
+  }
+  .access__edit-basic {
+    & > label {
+      grid-column: 1/2;
+      width: 100px;
+      @include flexCenterCenter;
+    }
+    & > input:not([type="submit"]),
+    & > select,
+    & > button {
+      grid-column: 2/-1;
+    }
+    & > input[type="submit"] {
+      grid-column: 2/4;
+    }
+  }
+  .access__edit-password {
+    // grid
+    & > label {
+      grid-column: 1/2;
+      width: 100px;
+
+      @include flexCenterCenter;
+    }
+    & > label[for="new_pasword"] {
+      grid-row: 3/5;
+    }
+
+    & > input:not([type="submit"]) {
+      grid-column: 2/-1;
+    }
+    & > input[type="submit"] {
+      grid-column: 1/3;
+    }
+    & > button {
+      grid-column: 3/-1;
+    }
+    & > a {
+      grid-column: 1/2;
+    }
+  }
+
+  .modifyCount {
+    grid-column: 2/-1;
+  }
+  button,
+  input[type="submit"] {
+    background-color: initial;
+    border: initial;
+  }
+}

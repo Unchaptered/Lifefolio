@@ -1,0 +1,56 @@
+@import "../config/_mixin";
+@import "../config/_variables";
+
+.form__access1 {
+  $access1_font: 14px;
+  @include flexCenterCenter;
+  .access__flex {
+    padding: 20px 40px 20px 25px;
+
+    width: auto;
+    height: auto;
+
+    gap: 10px;
+    display: grid;
+    grid-template: repeat(2, minmax(30px, auto)) / repeat(4, 1fr);
+
+    @include contentBorder;
+    align-items: center;
+    header {
+      grid-column: 1/-1;
+      justify-self: center;
+    }
+    label {
+      grid-column: 1/2;
+      justify-self: flex-end;
+      font-size: $access1_font;
+    }
+    label[for="shortcut"],
+    label[for="folioImage"] {
+      grid-column: 2/-1;
+      width: 100%;
+      height: 100%;
+      @include inputBorder;
+      @include flexCenterCenter;
+    }
+
+    input[type="text"] {
+      grid-column: 2/-1;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    input[type="submit"] {
+      grid-row: 6/7;
+      grid-column: 2/4;
+
+      @include resetSubmit;
+      @include inputBorder;
+    }
+    span {
+      font-size: $access1_font;
+      grid-row: 7/8;
+      grid-column: 1/-1;
+    }
+  }
+}

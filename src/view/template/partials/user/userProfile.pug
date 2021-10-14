@@ -1,4 +1,5 @@
-div.userProfile__img 이미지
+div.userProfile__img
+    img(src=`/${userDB.avatarUrl}`)
 div.userProfile__meta
     strong=userDB.username
         if loggedIn
@@ -11,16 +12,16 @@ div.userProfile__meta
     include ../access/view/viewMajor.pug
     include ../access/view/viewStatus.pug
     
-    if userDB.accountCreated
-        span from #{userDB.accountCreated}
-    else
-        span from 0000.00.00.00
+    //- if userDB.accountCreated
+    //-     span from #{userDB.accountCreated}
+    //- else
+    //-     span from 0000.00.00.00
 div.userProfile__descript
     if userDB.accountDescription
         span.dsecript__value #{userDB.accountDescription}
         if loggedIn
             if loggedInUser._id===String(userDB._id)
-                button.descript__modify 수정하기
+                button(type="button").descript__modify 수정하기
             else
                 span.descript__modify
         else
@@ -29,7 +30,7 @@ div.userProfile__descript
         span.dsecript__value 자기소개를 작성해주세요.
         if loggedIn
             if loggedInUser._id===String(userDB._id)
-                button.descript__modify 수정하기
+                button(type="button").descript__modify 수정하기
             else
                 span.descript__modify
         else
@@ -37,8 +38,7 @@ div.userProfile__descript
     div.dscript__modifyDiv.control__display-none
         input.descript__modifyValue(name="accountDescription", type="text", value=`${userDB.accountDescription}`,placeholder="자기소개를 작성해주세요.", max-length=50)
         input.descript__modifySubmit(name="accountDescriptionSubmit", type="submit", value="수정")
-        button.descript__modifyCanccel 취소
+        button(type="button").descript__modifyCanccel 취소
 
 
 script(src="/static/js/profile.js")
-script(src="/static/js/folioMixin.js")

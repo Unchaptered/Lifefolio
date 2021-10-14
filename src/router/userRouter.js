@@ -2,20 +2,27 @@ import express from "express";
 
 import { joinGet, loginGet } from "../controller/userControllers";
 import { joinPost, loginPost, logout } from "../controller/userControllers";
-import { profileGet, profilePost } from "../controller/userProfileControllers";
+
+import { follow } from "../controller/userFollowControllers";
+
+import { profileGet, profileEditGet } from "../controller/userProfileControllers";
+import { profilePost, profileEditPost } from "../controller/userProfileControllers";
 // Middleware
-import { unloginUserMD, loginUserMD } from "../middleware";
+import { unloginUserMD, loginUserMD, upUserAvatarMiddleware } from "../middleware";
 
 const userRouter=express.Router();
 
 userRouter
     .route("/");
+// Tester@gmail.com
+// TesterUsername
+
 
 userRouter
     .route("/join")
     .all(unloginUserMD)
     .get(joinGet)
-    .post(joinPost);
+    .post(upUserAvatarMiddleware.single("avatar"),joinPost);
 
 userRouter
     .route("/login")
@@ -34,6 +41,15 @@ userRouter
     .post(profilePost);
 
 userRouter
-    .route("/profile/:id/edit");
+    .route("/profile/:id/edit")
+    .all(loginUserMD)
+    .get(profileEditGet)
+    .post(profileEditPost);
+
+userRouter
+    .route("/profile/:id/follow")
+    .all(loginUserMD)
+    .get(follow);
+
 
 export default userRouter;

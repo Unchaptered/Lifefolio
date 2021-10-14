@@ -1,0 +1,19 @@
+extends ../../base/base.pug
+
+block content
+    form(method="POST", enctype="multipart/form-data").form__access
+        span.access__inner.access__title #{Title}
+        div.access__inner
+            label(for="folioName") 이름
+            input(name="folioName",type="text", placeholder="포트폴리오 이름", required, value=username)
+        div.access__inner
+            label(for="folioDescription") 설명
+            input(name="folioDescription",type="text", placeholder="포트폴리오 설명 (선택사항)", maxlenght=30, value=username)
+        div.access_inner
+            label.access_shortcutLabeel(for="shortcut") 표지 업로드
+            input.access_shortcutInput(name="shortcut", type="file", accept="image/*", id="shortcut")
+            
+        div.access__create
+            input(name="create", type="submit", value="포트폴리오 생성")
+        br
+        span 한 번 생성한 포트폴리오는 당신의 창작물을 보관해줄 것입니다.

@@ -1,0 +1,58 @@
+extends ../../base/base.pug
+include ../mixins/userFolio.pug
+
+block content
+    form(method="POST")#formBasic.form__access2
+        //- flex
+        div.access__edit-basic
+            //- grid
+            a(href=`/user/profile/${userDB._id}`) 뒤로가기
+            // 필수정보
+            if userDB.accountEditCount!==3
+                span.modifyCount 이메일/유저이름 변경 가능 횟수가 #{3-userDB.accountEditCount} 번 남았습니다.
+                label(for="email") 이메일
+                input(name="email", type="email", value=userDB.email)
+                label(for="username") 유저이름
+                input(name="username", type="text", value=userDB.username)
+            else
+                span.modifyCount 이메일/유저이름은 더이상 변경할 수 없습니다
+                label(for="email") 이메일
+                input(name="email", type="email", value=userDB.email, disabled)
+                label(for="username") 유저이름
+                input(name="username", type="text", value=userDB.username, disabled)
+            label(for="password") 비밀번호
+            button(type="button", disabled).modifyPWBtn 비밀번호 수정하기
+            label(for="age") 나이
+            input(name="age", type="number", min=1, value=userDB.age)
+            // 선택가능
+            label(for="major") 전공
+            include ../partials/access/input/inputMajor
+            label(for="statusNow") 상태
+            include ../partials/access/input/inputStatus
+            label(for="accountDescription") 자기소개
+            input(name="accountDescription", type="tex t", value=userDB.accountDescription)
+            input(name="submit", type="submit", value="정보 수정하기").modifySubmit
+
+    form(method="POST")#formPassword.form__access2.control__display-none
+        //- flex
+        div.access__edit-password
+            //- grid
+            a(href=`/user/profile/${userDB._id}`) 뒤로가기
+            if userDB.accountPasswordCount!==3
+                span.modifyCount 비밀번호 변경 가능 횟수가 #{3-userDB.accountPasswordCount} 번 남았습니다.
+                label(for="old_password") 비밀번호
+                input(name="old_password", type="password", placeholder="기존 비밀번호", required)
+                label(for="new_pasword") 새 비밀번호
+                input(name="new_password", type="password", placeholder="변경할 비밀번호", required)
+                input(name="new_password2", type="password", placeholder="변경할 비밀번호 확인", required)
+            else
+                span.modifyCount 비밀번호는 더이상 변경할 수 없습니다.
+                label(for="old_password") 비밀번호
+                input(name="old_password", type="text", placeholder="기존 비밀번호", disabled)
+                label(for="new_pasword") 새 비밀번호
+                input(name="new_password", type="text", placeholder="변경할 비밀번호", disabled)
+                input(name="new_password2", type="text", placeholder="변경할 비밀번호 확인", disabled)
+            input(name="submit", type="submit", value="정보 수정하기").modifyPWSubmit
+            button(type="button").modifyPWCancel 비밀번호 변경 취소
+
+    script(src="/static/js/profileEdit.js")

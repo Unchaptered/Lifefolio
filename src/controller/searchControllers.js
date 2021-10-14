@@ -1,3 +1,6 @@
+import helpObj from "../class/helpObject";
+import pageObj from "../class/pageObject";
+
 import userModel from "../model/account/userModel";
 import folioModel from "../model/folio/folioModel";
 import folioImageModel from "../model/folio/folioImageModel";

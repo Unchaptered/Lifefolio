@@ -1,12 +1,14 @@
 import express from "express";
 
-import { loginUserMD } from "../middleware";
 // folio upload
 import { autoProfile, uploadGet } from "../controller/folioControllers";
 import { uploadPost } from "../controller/folioControllers";
 // folio view
 import { folioViewGet } from "../controller/folioViewControllers";
 import { folioViewPost } from "../controller/folioViewControllers";
+
+import { loginUserMD, upFolioShortcutMiddleware, upFolioImagesMiddleware } from "../middleware";
+
 const folioRouter=express.Router();
 
 folioRouter
@@ -18,12 +20,12 @@ folioRouter
     .route("/upload")
     .all(loginUserMD)
     .get(uploadGet)
-    .post(uploadPost);
+    .post(upFolioShortcutMiddleware.single("shortcut"),uploadPost);
 
 folioRouter
     .route("/:id")
     .get(folioViewGet)
     .all(loginUserMD)
-    .post(folioViewPost);
+    .post(upFolioImagesMiddleware.single("folioImage"),folioViewPost);
 
 export default folioRouter;

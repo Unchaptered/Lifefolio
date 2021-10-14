@@ -150,73 +150,6 @@ table {
         main
         navPorfile
 */
-#navTop {
-  position: fixed;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 40px;
-  padding: 0 8px;
-  background-color: white;
-}
-#navTop > a {
-  color: black;
-  text-decoration: none;
-}
-#navTop > button {
-  border: initial;
-  background-color: initial;
-}
-#navTop > a, #navTop > button {
-  width: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#navTop > a > svg, #navTop > button > svg {
-  width: 28px;
-  transition: all 0.2s ease-in-out;
-  width: 20px;
-  height: 30px;
-}
-#navTop > a:hover > svg, #navTop > button:hover > svg {
-  color: #9e5151;
-}
-
-.navProfile {
-  position: fixed;
-  bottom: 0;
-  right: 30px;
-  width: auto;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  background-color: white;
-}
-.navProfile > div > a > img {
-  width: 30px;
-}
-.navProfile > div > a > button {
-  font-size: 15px;
-  border: initial;
-  background-color: initial;
-}
-
-.navProfileBtn {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 30px;
-  height: 60px;
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-}
-.navProfileBtn > svg {
-  width: 30px;
-}
-
 #header {
   padding-top: 40px;
   width: 100%;
@@ -227,7 +160,7 @@ table {
   justify-content: center;
 }
 #header > .header__Title {
-  color: black;
+  color: inherit;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
   font-size: 30px;
@@ -235,19 +168,19 @@ table {
   margin-bottom: 10px;
 }
 #header > .header__Title:hover {
-  color: #9e5151;
+  color: #caa4a4;
 }
 #header > .header__Error {
   color: #6161c3;
   text-decoration: underline;
 }
 #header > .header__Subtitle {
-  color: black;
+  color: inherit;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 }
 #header > .header__Subtitle:hover {
-  color: #9e5151;
+  color: #caa4a4;
 }
 
 #main {
@@ -285,6 +218,270 @@ table {
         main
         navPorfile
 */
+.changeSearch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.changeSearch > button {
+  border: initial;
+  background-color: initial;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.conditions__user__mixins {
+  padding: 30px;
+  border: 3px double black;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+}
+.conditions__user__mixins:hover {
+  background-color: #e2cdcd;
+}
+.conditions__user__mixins:hover > .conditions__user__meta span {
+  color: #caa4a4;
+  color: white;
+}
+.conditions__user__mixins > a {
+  text-decoration: initial;
+  color: initial;
+}
+.conditions__user__mixins .conditions__user__meta {
+  display: flex;
+  flex-direction: column;
+}
+.conditions__user__mixins .conditions__user__meta > span, .conditions__user__mixins .conditions__user__meta > div > span {
+  margin: 5px;
+}
+.conditions__user__mixins .conditions__user__meta > span {
+  font-size: 20px;
+  font-weight: 600;
+}
+.conditions__user__mixins .conditions__user__meta > div > span {
+  color: rgba(0, 0, 0, 0.6);
+}
+.conditions__user__mixins .conditions__user__image {
+  width: 200px;
+  height: 100px;
+}
+.conditions__user__mixins .conditions__user__image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+  opacity: 0.6;
+}
+
+/* media query (screen) 을 3단게로 분류
+    Narrow << 이 기준으로 제작
+    Normal
+    Wide
+*/
+/* body
+        navTop
+        header
+        main
+        navPorfile
+*/
+.form__folio,
+.form__folio-grid {
+  overflow: hidden;
+  /* overfolow attributes
+      visible : 내용이 흘러넘침
+      hidden : 내용이 잘리는 부분은 자르기
+      scroll : 항상 스크롤바 노출
+      auto : 내용이 잘릴 때만 스크롤바 노출
+    */
+  position: relative;
+  padding-top: 150%;
+  width: 100%;
+  height: 0;
+}
+.form__folio .folio__contentBox,
+.form__folio-grid .folio__contentBox {
+  position: absolute;
+  top: 2.5%;
+  left: 2.5%;
+  width: 95%;
+  height: 95%;
+}
+.form__folio .folio__contentBox > .coverData > img,
+.form__folio-grid .folio__contentBox > .coverData > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.form__folio-grid {
+  padding-top: 150%;
+  transition: all 0.2s ease-in-out;
+}
+@media screen and (min-width: 1200px) {
+  .form__folio-grid {
+    padding-top: 150%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .form__folio-grid {
+    padding-top: 50%;
+  }
+}
+.form__folio-grid .folio__contentBoxGrid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: repeat(15, minmax(1fr, 0))/repeat(1, 1fr);
+}
+.form__folio-grid .folio__contentBoxGrid .headerData {
+  grid-row: 1/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 600;
+  margin: 0 5%;
+}
+.form__folio-grid .folio__contentBoxGrid .headerData > a {
+  color: inherit;
+  text-decoration: none;
+}
+.form__folio-grid .folio__contentBoxGrid .metaData {
+  grid-row: 3/6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 5%;
+}
+.form__folio-grid .folio__contentBoxGrid .metaData > a {
+  color: inherit;
+  text-decoration: none;
+}
+.form__folio-grid .folio__contentBoxGrid .metaData > a, .form__folio-grid .folio__contentBoxGrid .metaData > span {
+  margin: 5px 0;
+}
+.form__folio-grid .folio__contentBoxGrid .preview {
+  grid-row: 6/-1;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+  transition: all 0.2s ease-in-out;
+}
+.form__folio-grid .folio__contentBoxGrid .preview > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form__folio-grid .folio__contentBoxGrid .preview > div > img {
+  width: 90%;
+  height: 90%;
+  object-fit: fill;
+}
+@media screen and (min-width: 1200px) {
+  .form__folio-grid .folio__contentBoxGrid .preview {
+    gap: 50px;
+    grid-template: repeat(1, 1fr)/repeat(1, 1fr);
+  }
+}
+@media screen and (max-width: 800px) {
+  .form__folio-grid .folio__contentBoxGrid .preview {
+    grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+  }
+}
+.form__folio-grid .folio__contentBoxGrid .preview-border > svg {
+  opacity: 0;
+  width: 90%;
+  height: 90%;
+  object-fit: fill;
+}
+
+/* media query (screen) 을 3단게로 분류
+    Narrow << 이 기준으로 제작
+    Normal
+    Wide
+*/
+/* body
+        navTop
+        header
+        main
+        navPorfile
+*/
+.changeLogin,
+.changeJoin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.changeLogin > button, .changeLogin > a,
+.changeJoin > button,
+.changeJoin > a {
+  margin: 10px;
+}
+.changeLogin > button,
+.changeJoin > button {
+  font-size: 16px;
+  font-weight: 600;
+  border: initial;
+  background-color: initial;
+}
+.changeLogin > a,
+.changeJoin > a {
+  font-size: 16px;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* media query (screen) 을 3단게로 분류
+    Narrow << 이 기준으로 제작
+    Normal
+    Wide
+*/
+/* body
+        navTop
+        header
+        main
+        navPorfile
+*/
+.linkJoin,
+.linkLogin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.linkJoin > a,
+.linkLogin > a {
+  margin: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+.linkJoin > span,
+.linkLogin > span {
+  color: #6161c3;
+  text-decoration: underline;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* media query (screen) 을 3단게로 분류
+    Narrow << 이 기준으로 제작
+    Normal
+    Wide
+*/
+/* body
+        navTop
+        header
+        main
+        navPorfile
+*/
 .form__profile {
   display: grid;
   grid-template: repeat(3, minmax(10px, auto))/repeat(4, 1fr);
@@ -293,7 +490,17 @@ table {
 .form__profile > .userProfile__img {
   grid-row: 1/2;
   grid-column: 4/-1;
-  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: AUTO;
+}
+.form__profile > .userProfile__img > img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  opacity: 0.9;
 }
 .form__profile > .userProfile__meta {
   grid-row: 1/2;
@@ -483,7 +690,7 @@ table {
   color: #3232dd;
 }
 .form__profile > .userProfile__meta a {
-  color: black;
+  color: inherit;
   text-decoration: none;
   font-size: 13px;
   margin-left: 3px;
@@ -499,106 +706,169 @@ table {
   transform: scale(1.8);
 }
 
-/* media query (screen) 을 3단게로 분류
-    Narrow << 이 기준으로 제작
-    Normal
-    Wide
-*/
-/* body
-        navTop
-        header
-        main
-        navPorfile
-*/
-.changeSearch {
+.userProfile__following .following__flex,
+.userProfile__following .followed__flex,
+.userProfile__followed .following__flex,
+.userProfile__followed .followed__flex {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
-.changeSearch > button {
+.userProfile__following .following__flex > .following__size, .userProfile__following .following__flex > .followed__size,
+.userProfile__following .followed__flex > .following__size,
+.userProfile__following .followed__flex > .followed__size,
+.userProfile__followed .following__flex > .following__size,
+.userProfile__followed .following__flex > .followed__size,
+.userProfile__followed .followed__flex > .following__size,
+.userProfile__followed .followed__flex > .followed__size {
+  gap: 10px;
+  display: grid;
+  grid-template: repeat(1, 1fr)/repeat(5, minmax(10px, 1fr));
+}
+.userProfile__following .following__flex > .following__size > a, .userProfile__following .following__flex > .followed__size > a,
+.userProfile__following .followed__flex > .following__size > a,
+.userProfile__following .followed__flex > .followed__size > a,
+.userProfile__followed .following__flex > .following__size > a,
+.userProfile__followed .following__flex > .followed__size > a,
+.userProfile__followed .followed__flex > .following__size > a,
+.userProfile__followed .followed__flex > .followed__size > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: initial;
+  transition: all 0.2s ease-in-out;
+}
+.userProfile__following .following__flex > .following__size > a > svg, .userProfile__following .following__flex > .followed__size > a > svg,
+.userProfile__following .followed__flex > .following__size > a > svg,
+.userProfile__following .followed__flex > .followed__size > a > svg,
+.userProfile__followed .following__flex > .following__size > a > svg,
+.userProfile__followed .following__flex > .followed__size > a > svg,
+.userProfile__followed .followed__flex > .following__size > a > svg,
+.userProfile__followed .followed__flex > .followed__size > a > svg {
+  width: 20px;
+}
+.userProfile__following .following__flex > .following__size > a:hover, .userProfile__following .following__flex > .followed__size > a:hover,
+.userProfile__following .followed__flex > .following__size > a:hover,
+.userProfile__following .followed__flex > .followed__size > a:hover,
+.userProfile__followed .following__flex > .following__size > a:hover,
+.userProfile__followed .following__flex > .followed__size > a:hover,
+.userProfile__followed .followed__flex > .following__size > a:hover,
+.userProfile__followed .followed__flex > .followed__size > a:hover {
+  color: #caa4a4;
+}
+.userProfile__following .following__flex > .following__size > button, .userProfile__following .following__flex > .followed__size > button,
+.userProfile__following .followed__flex > .following__size > button,
+.userProfile__following .followed__flex > .followed__size > button,
+.userProfile__followed .following__flex > .following__size > button,
+.userProfile__followed .following__flex > .followed__size > button,
+.userProfile__followed .followed__flex > .following__size > button,
+.userProfile__followed .followed__flex > .followed__size > button {
   border: initial;
   background-color: initial;
-  margin: 10px;
-  font-size: 16px;
+}
+.userProfile__following .following__flex > .following__size .following__sort,
+.userProfile__following .following__flex > .following__size .followed__sort, .userProfile__following .following__flex > .followed__size .following__sort,
+.userProfile__following .following__flex > .followed__size .followed__sort,
+.userProfile__following .followed__flex > .following__size .following__sort,
+.userProfile__following .followed__flex > .following__size .followed__sort,
+.userProfile__following .followed__flex > .followed__size .following__sort,
+.userProfile__following .followed__flex > .followed__size .followed__sort,
+.userProfile__followed .following__flex > .following__size .following__sort,
+.userProfile__followed .following__flex > .following__size .followed__sort,
+.userProfile__followed .following__flex > .followed__size .following__sort,
+.userProfile__followed .following__flex > .followed__size .followed__sort,
+.userProfile__followed .followed__flex > .following__size .following__sort,
+.userProfile__followed .followed__flex > .following__size .followed__sort,
+.userProfile__followed .followed__flex > .followed__size .following__sort,
+.userProfile__followed .followed__flex > .followed__size .followed__sort {
+  justify-self: flex-start;
+}
+.userProfile__following .following__flex > .following__size .following__username,
+.userProfile__following .following__flex > .following__size .followed__username, .userProfile__following .following__flex > .followed__size .following__username,
+.userProfile__following .following__flex > .followed__size .followed__username,
+.userProfile__following .followed__flex > .following__size .following__username,
+.userProfile__following .followed__flex > .following__size .followed__username,
+.userProfile__following .followed__flex > .followed__size .following__username,
+.userProfile__following .followed__flex > .followed__size .followed__username,
+.userProfile__followed .following__flex > .following__size .following__username,
+.userProfile__followed .following__flex > .following__size .followed__username,
+.userProfile__followed .following__flex > .followed__size .following__username,
+.userProfile__followed .following__flex > .followed__size .followed__username,
+.userProfile__followed .followed__flex > .following__size .following__username,
+.userProfile__followed .followed__flex > .following__size .followed__username,
+.userProfile__followed .followed__flex > .followed__size .following__username,
+.userProfile__followed .followed__flex > .followed__size .followed__username {
+  grid-column: 2/-2;
 }
 
-/* media query (screen) 을 3단게로 분류
-    Narrow << 이 기준으로 제작
-    Normal
-    Wide
-*/
-/* body
-        navTop
-        header
-        main
-        navPorfile
-*/
-/* media query (screen) 을 3단게로 분류
-    Narrow << 이 기준으로 제작
-    Normal
-    Wide
-*/
-/* body
-        navTop
-        header
-        main
-        navPorfile
-*/
-.changeLogin,
-.changeJoin {
+#navTop {
+  position: fixed;
   display: flex;
   align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 40px;
+  padding: 0 8px;
+  background-color: white;
 }
-.changeLogin > button, .changeLogin > a,
-.changeJoin > button,
-.changeJoin > a {
-  margin: 10px;
+#navTop > a {
+  color: inherit;
+  text-decoration: none;
 }
-.changeLogin > button,
-.changeJoin > button {
-  font-size: 16px;
-  font-weight: 600;
+#navTop > button {
   border: initial;
   background-color: initial;
 }
-.changeLogin > a,
-.changeJoin > a {
-  font-size: 16px;
-  color: black;
-  text-decoration: none;
+#navTop > a, #navTop > button {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#navTop > a > svg, #navTop > button > svg {
+  width: 28px;
+  transition: all 0.2s ease-in-out;
+  width: 20px;
+  height: 30px;
+}
+#navTop > a:hover > svg, #navTop > button:hover > svg {
+  color: #caa4a4;
 }
 
-/* media query (screen) 을 3단게로 분류
-    Narrow << 이 기준으로 제작
-    Normal
-    Wide
-*/
-/* body
-        navTop
-        header
-        main
-        navPorfile
-*/
-.linkJoin,
-.linkLogin {
+.navProfile {
+  position: fixed;
+  bottom: 0;
+  right: 30px;
+  width: auto;
+  height: 60px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
+  background-color: white;
 }
-.linkJoin > a,
-.linkLogin > a {
-  margin: 10px;
-  color: black;
-  text-decoration: none;
+.navProfile > div > a > img {
+  width: 30px;
 }
-.linkJoin > span,
-.linkLogin > span {
-  color: #6161c3;
-  text-decoration: underline;
+.navProfile > div > a > button {
+  font-size: 15px;
+  border: initial;
+  background-color: initial;
+}
+
+.navProfileBtn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 60px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+}
+.navProfileBtn > svg {
+  width: 30px;
 }
 
 /* contains
@@ -691,6 +961,154 @@ table {
   transition: all 0.2s ease-in-out;
 }
 
+.access_shortcutLabeel {
+  padding: 6px 25px;
+  background-color: #ff6600;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+/* media query (screen) 을 3단게로 분류
+    Narrow << 이 기준으로 제작
+    Normal
+    Wide
+*/
+/* body
+        navTop
+        header
+        main
+        navPorfile
+*/
+.form__access1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form__access1 .access__flex {
+  padding: 20px 40px 20px 25px;
+  width: auto;
+  height: auto;
+  gap: 10px;
+  display: grid;
+  grid-template: repeat(2, minmax(30px, auto))/repeat(4, 1fr);
+  border: 3px double black;
+  border-radius: 10px;
+  align-items: center;
+}
+.form__access1 .access__flex header {
+  grid-column: 1/-1;
+  justify-self: center;
+}
+.form__access1 .access__flex label {
+  grid-column: 1/2;
+  justify-self: flex-end;
+  font-size: 14px;
+}
+.form__access1 .access__flex label[for=shortcut],
+.form__access1 .access__flex label[for=folioImage] {
+  grid-column: 2/-1;
+  width: 100%;
+  height: 100%;
+  border: 1px solid darkgrey;
+  background-color: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form__access1 .access__flex input[type=text] {
+  grid-column: 2/-1;
+}
+.form__access1 .access__flex input[type=file] {
+  display: none;
+}
+.form__access1 .access__flex input[type=submit] {
+  grid-row: 6/7;
+  grid-column: 2/4;
+  border: initial;
+  background-color: initial;
+  border: 1px solid darkgrey;
+  background-color: initial;
+}
+.form__access1 .access__flex span {
+  font-size: 14px;
+  grid-row: 7/8;
+  grid-column: 1/-1;
+}
+
+.form__access2 {
+  font-size: 16px;
+  width: auto;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px 20px 25px;
+  border: 3px double black;
+  border-radius: 10px;
+  align-self: center;
+}
+.form__access2 .access__edit-basic,
+.form__access2 .access__edit-password {
+  min-width: 300px;
+  width: 70%;
+  max-width: 600px;
+  display: grid;
+  gap: 10px;
+  grid-template: repeat(3, minmax(10px, 1fr))/repeat(4, 1fr);
+}
+.form__access2 .access__edit-basic > a,
+.form__access2 .access__edit-password > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  text-decoration: none;
+}
+.form__access2 .access__edit-basic > label {
+  grid-column: 1/2;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form__access2 .access__edit-basic > input:not([type=submit]), .form__access2 .access__edit-basic > select, .form__access2 .access__edit-basic > button {
+  grid-column: 2/-1;
+}
+.form__access2 .access__edit-basic > input[type=submit] {
+  grid-column: 2/4;
+}
+.form__access2 .access__edit-password > label {
+  grid-column: 1/2;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form__access2 .access__edit-password > label[for=new_pasword] {
+  grid-row: 3/5;
+}
+.form__access2 .access__edit-password > input:not([type=submit]) {
+  grid-column: 2/-1;
+}
+.form__access2 .access__edit-password > input[type=submit] {
+  grid-column: 1/3;
+}
+.form__access2 .access__edit-password > button {
+  grid-column: 3/-1;
+}
+.form__access2 .access__edit-password > a {
+  grid-column: 1/2;
+}
+.form__access2 .modifyCount {
+  grid-column: 2/-1;
+}
+.form__access2 button,
+.form__access2 input[type=submit] {
+  background-color: initial;
+  border: initial;
+}
+
 /* media query (screen) 을 3단게로 분류
     Narrow << 이 기준으로 제작
     Normal
@@ -715,19 +1133,19 @@ table {
 
 .form__content-grid {
   display: grid;
-  grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+  grid-template: repeat(1, auto)/repeat(2, 1fr);
   gap: 20px;
   margin-top: 20px;
   transition: all 0.2s ease-in-out;
 }
 @media screen and (min-width: 1200px) {
   .form__content-grid {
-    grid-template: repeat(2, 1fr)/repeat(3, 1fr);
+    grid-template: repeat(1, auto)/repeat(4, 1fr);
   }
 }
 @media screen and (max-width: 800px) {
   .form__content-grid {
-    grid-template: repeat(2, 1fr)/repeat(1, 1fr);
+    grid-template: repeat(1, auto)/repeat(1, 1fr);
   }
 }
 
@@ -808,10 +1226,18 @@ table {
   text-align: right;
 }
 
+/* media query (screen) 을 3단게로 분류
+    Narrow << 이 기준으로 제작
+    Normal
+    Wide
+*/
+/* body
+        navTop
+        header
+        main
+        navPorfile
+*/
 body {
-  height: 1200px;
-  margin: 0px;
-  padding: 0px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 body svg {

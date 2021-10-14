@@ -1,32 +1,22 @@
 extends ../../base/base.pug
 include ../mixins/userFolioImage.pug
 
-block content 
-    include ../partials/viewProfile
-    
-    div.form__content-grid
-        div.form__content
-            div
-                div.folio__imageDiv
-                    if folioDB.folioImageArray===null
-                        //- span folioIMageDB 가 없음
-                        span 이미지 파일이 없습니다.
-                        if loggedIn
-                            if loggedInUser._id===String(folioDB.master)
-                                button.imageUploadBtn 추가하기
-                            else
-                                span.imageUploadBtn
-                        else 
-                            span.imageUploadBtn
-                    else
-                        each folioImage in folioDB.folioImageArray
-                            +folioImage(folioImage)
-                        else
-                            span 하이
-                form(method="POST") 
-                    div.folio__imageUpload.control__display-none
-                        input.imageUploadTarget(name="target", type="text", placeholder="이미지 제목을 입력하세요")
-                        input.imageUploadSubmit(name="submit", type="submit", value="이미지 업로드")
-                        button.imageUploadCancel 취소하기
+block content
+    form.screen__folio(method="POST", enctype="multipart/form-data")
 
-    script(src="/static/js/folio.js")
+    div#folioImageUploadDiv.control__display-none
+        form(method="POST", enctype="multipart/form-data").form__access1
+            div.access__flex
+                header.access__title 사진 업로드
+
+                label(for="folioImageName") 이름
+                input(name="folioImageName",type="text", placeholder="포트폴리오 이름", required, value=username)
+
+                label 작업물
+                label.access(for="folioImage") 파일 선택
+                input(name="folioImage", type="file", accept="image/*", id="folioImage")
+
+                input(name="create", type="submit", value="사진 업로드")
+                span 한 번 생성한 포트폴리오는 당신의 창작물을 보관해줄 것입니다.
+
+    script(src="/static/js/folioView.js")

@@ -1,5 +1,7 @@
-import userModel from "../model/account/userModel";
+import helpObj from "../class/helpObject";
+import pageObj from "../class/pageObject";
 
+import userModel from "../model/account/userModel";
 import folioModel from "../model/folio/folioModel";
 import folioImageModel from "../model/folio/folioImageModel";
 
@@ -17,6 +19,7 @@ export const folioViewGet=async(req,res)=>{
         const folioDB=await folioModel.findById({_id:id}).populate("folioImageArray");
 
         console.log(folioDB);
+        
         renSetup[0].Title=folioDB.folioName;
         renSetup[0].Message=(String(folioDB.folioDescription)==="") ?
             " " : folioDB.folioDescription;
@@ -32,14 +35,15 @@ export const folioViewGet=async(req,res)=>{
     }
 };
 export const folioViewPost=async(req,res)=>{
-    try{
+    // try{
         const {
-            body:{ target, submit },
+            file:{ path:{ folioImagesUrl } },
+            body:{ folioImage:folioImageName, submit },
             session:{ user:{ _id }},
             params: { id }
         }=req;
 
-        // FInd Folio Master
+        // Find Folio Master
         const folioDB=await folioModel.findById({_id:id});
         const userDB=await userModel.findById({_id:folioDB.master});
         // Vallidation Users
@@ -47,7 +51,10 @@ export const folioViewPost=async(req,res)=>{
             return res.redirect("/");
         } else {
             const folioImageDB=await folioImageModel.create({
-                imageName:target,
+                // Basic Data
+                folioImageName,
+                folioImagesUrl,
+                // Master(Owner) and Master Folio Data
                 master:userDB._id,
                 masterName:String(userDB.useranme),
                 masterFolio:folioDB._id,
@@ -59,9 +66,10 @@ export const folioViewPost=async(req,res)=>{
             userDB.folioImageNameArray.push(folioImageDB.imageName);
             folioDB.save();
             userDB.save();
+            
+            return res.redirect(`/folio/${id}`);
         }
-        return res.redirect(`/folio/${id}`);
-    } catch(error){
-        return res.redirect("/");
-    }
+    // } catch(error){
+    //     return res.redirect("/");
+    // }
 };

@@ -1,0 +1,36 @@
+case userDB.statusNow
+    when 99
+        select(name="statusNow")
+            option(value=99, selected) -
+            option(value=0) 구경 중
+            option(value=1) 공부 중
+            option(value=2) 구직 중
+            option(value=3) 외주 중
+    when 0
+        select(name="statusNow")
+            option(value=99) -
+            option(value=0, selected) 구경 중
+            option(value=1) 공부 중
+            option(value=2) 구직 중
+            option(value=3) 외주 중
+    when 1
+        select(name="statusNow")
+            option(value=99) -
+            option(value=0) 구경 중
+            option(value=1, selected) 공부 중
+            option(value=2) 구직 중
+            option(value=3) 외주 중
+    when 2
+        select(name="statusNow")
+            option(value=99) -
+            option(value=0) 구경 중
+            option(value=1) 공부 중
+            option(value=2, selected) 구직 중
+            option(value=3) 외주 중
+    when 3
+        select(name="statusNow")
+            option(value=99) -
+            option(value=0) 구경 중 
+            option(value=1) 공부 중
+            option(value=2) 구직 중
+            option(value=3, selected) 외주 중

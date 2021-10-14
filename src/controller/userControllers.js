@@ -1,4 +1,8 @@
+import helpObj from "../class/helpObject";
+import pageObj from "../class/pageObject";
+
 import bcrypt from "bcrypt";
+
 import userModel from "../model/account/userModel";
 
 const renSetup=[
@@ -12,6 +16,7 @@ const renSetup=[
     },
 ];
 
+// Join
 export const joinGet=(req,res)=>{
     return res.render("template/user/join", {
         Title: renSetup[0].Title,
@@ -20,8 +25,10 @@ export const joinGet=(req,res)=>{
 };
 export const joinPost=async(req,res)=>{
     try{
-        const { username, email, password, password2, age, major, statusNow }=req.body;
-        
+        const {
+            file: { path: avatarUrl },
+            body: { username, email, password, password2, age, major, statusNow }
+        }=req;
         // Validation password === password2
         if(password!==password2) { // 비밀번호 불일치
             return res.render("template/user/join", {
@@ -30,15 +37,13 @@ export const joinPost=async(req,res)=>{
                 error: "비밀번호가 서로 다릅니다.",
                 username, email, age, major
             });
-        }
+        };
         // Validation to unique
         const userExists=await userModel.findOne({ $or: [{ username }, { email }] });
-        console.log(userExists);
         if(userExists) { // 사용 중인 아이디
             const nameVali=Boolean(String(userExists.username) === username);
             const emailVali=Boolean(String(userExists.email) === email);
             let userCheck="";
-
             if(nameVali) {
                 if(emailVali) { userCheck="유저 이름과 이메일이 중복입니다.";
                     return res.render("template/user/join", {
@@ -47,13 +52,13 @@ export const joinPost=async(req,res)=>{
                         error: userCheck,
                         age, major
                     });
-                }
+                };
                 userCheck="유저 이름이 중복입니다.";
                 return res.render("template/user/join", {
                     Title: renSetup[0].Title,
                     Message: renSetup[0].Message,
                     error: userCheck,
-                    age, major, username
+                    age, major, email
                 });
             } else { userCheck="이메일이 중복입니다.";
                 return res.render("template/user/join", {
@@ -62,21 +67,17 @@ export const joinPost=async(req,res)=>{
                     error: userCheck,
                     age, major, username
                 });
-            }
-        }
-        
-        // const userYear=new Date.getFullYear();
-        // const userMonth=new Date.getMonth();
-        // const userDate=new Date.getDate();
-        // const accountCreated=`${userYear}:${userMonth}:${userDate}`;
-
-        await userModel.create({ username, email, password, age, major, statusNow });
+            };
+        };
+        await userModel.create({ username, email, password, age, major, statusNow, avatarUrl });
 
         return res.redirect("/user/login");
     } catch (error) {
         return res.status(400).redirect("/user/join");
-    }
+    };
 };
+
+// Login
 export const loginGet=(req,res)=>{
     return res.render("template/user/login", {
         Title: renSetup[1].Title,
@@ -96,7 +97,7 @@ export const loginPost=async(req,res)=>{
                 Message: renSetup[1].Message,
                 error: "존재하지 않는 아이디입니다."
             });
-        }
+        };
 
         const passwordCheck=await bcrypt.compare(password, userDB.password);
         if(!passwordCheck) { // 비밀번호 불일치
@@ -106,7 +107,7 @@ export const loginPost=async(req,res)=>{
                 error: "올바르지 않은 비밀번호입니다.",
                 username
             });
-        }
+        };
 
         req.session.loggedIn=true;
         req.session.user=userDB;
@@ -115,8 +116,10 @@ export const loginPost=async(req,res)=>{
         return res.redirect("/");
     } catch(error) {
         return res.status(400).redirect("/user/login");
-    }
+    };
 };
+
+// Logout
 export const logout=async(req,res)=>{
     try{ 
         await req.session.destroy();

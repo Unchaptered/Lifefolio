@@ -1,6 +1,5 @@
 div.userMeta__Project
-    span 프로젝트 생성 수 : 
-    span 0개 0파일
+    span #{userDB.folioNameArray.length} 프로젝트 #{userDB.folioImageNameArray.length} 파일
     if loggedIn
         if loggedInUser._id===String(userDB._id)
             a(href="/folio/upload").project__upload

@@ -1,4 +1,8 @@
+import helpObj from "../class/helpObject";
+import pageObj from "../class/pageObject";
+
 import bcrypt from "bcrypt";
+
 import companyModel from "../model/account/companyModel";
 
 const renSetup=[

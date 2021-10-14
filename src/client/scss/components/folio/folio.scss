@@ -1,0 +1,112 @@
+@import "../../config/_mixin";
+@import "../../config/_variables";
+
+// folio.shortcutUrl 존재
+.form__folio,
+.form__folio-grid {
+  overflow: hidden;
+  /* overfolow attributes
+      visible : 내용이 흘러넘침
+      hidden : 내용이 잘리는 부분은 자르기
+      scroll : 항상 스크롤바 노출
+      auto : 내용이 잘릴 때만 스크롤바 노출
+    */
+  position: relative;
+  padding-top: 150%;
+  width: 100%;
+  height: 0;
+  // background-color: blanchedalmond;
+  .folio__contentBox {
+    position: absolute;
+    top: 2.5%;
+    left: 2.5%;
+    width: 95%;
+    height: 95%;
+    & > .coverData > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+// folio.shortcutUrl 미존재
+.form__folio-grid {
+  padding-top: 150%;
+  @include standardTrnasition;
+  @media screen and (min-width: 1200px) {
+    padding-top: 150%;
+  }
+  @media screen and (max-width: 800px) {
+    padding-top: 50%;
+  }
+  .folio__contentBoxGrid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: repeat(15, minmax(1fr, 0)) / repeat(1, 1fr);
+    //동일
+    .headerData {
+      grid-row: 1/3;
+      @include flexCenterCenter;
+
+      font-size: 25px;
+      font-weight: 600;
+      margin: 0 5%;
+      & > a {
+        @include resetA;
+      }
+    }
+    .metaData {
+      grid-row: 3/6;
+      @include flexCenterCenter;
+      flex-direction: column;
+
+      margin: 0 5%;
+      & > a {
+        @include resetA;
+      }
+      & > a,
+      & > span {
+        margin: 5px 0;
+      }
+    }
+    .preview {
+      grid-row: 6/-1;
+
+      width: 100%;
+      height: 100%;
+
+      display: grid;
+      grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+      & > div {
+        @include flexCenterCenter;
+      }
+      & > div > img {
+        width: 90%;
+        height: 90%;
+        object-fit: fill;
+      }
+      @include standardTrnasition;
+      @media screen and (min-width: 1200px) {
+        gap: 50px;
+        grid-template: repeat(1, 1fr) / repeat(1, 1fr);
+      }
+      @media screen and (max-width: 800px) {
+        grid-template: repeat(2, 1fr) / repeat(2, 1fr);
+      }
+    }
+    .preview-border {
+      & > svg {
+        opacity: 0;
+
+        width: 90%;
+        height: 90%;
+        object-fit: fill;
+      }
+    }
+  }
+}

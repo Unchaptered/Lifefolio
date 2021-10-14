@@ -1,3 +1,6 @@
+import multer from "multer";
+
+// Session
 export const localsMiddleware=(req,res,next)=>{
     res.locals.loggedIn=Boolean(req.session.loggedIn);
     res.locals.loggedInUser=req.session.user || null;
@@ -5,6 +8,20 @@ export const localsMiddleware=(req,res,next)=>{
     res.locals.loggedInCompany=req.session.company || null;
     next();
 };
+
+// Multer
+export const upUserAvatarMiddleware=multer({
+    dest: "uploads/avatars/",
+    // limits: { fieldSize: 3000000 },
+});
+export const upFolioShortcutMiddleware=multer({
+    dest: "uploads/shortcuts/",
+    // limits: { fileSize: 12000000,},
+});
+export const upFolioImagesMiddleware=multer({
+    dest: "uploads/folioImages/",
+    // limits: { fileSize: 12000000,},
+});
 
 // User
 export const unloginUserMD=(req,res,next)=>{

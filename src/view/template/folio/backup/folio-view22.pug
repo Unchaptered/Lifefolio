@@ -1,0 +1,66 @@
+extends ../../base/base.pug
+include ../mixins/userFolioImage.pug
+
+block content
+    form(method="POST", enctype="multipart/form-data")
+        div.form__content
+            div.form__folioProfile
+                div.folioProfile__data
+                    div.headerData
+                        a(href=`/folio/${folioDB._id}`)
+                            header=folioDB.folioName
+                    // 메타 30% 3
+                    div.metaData
+                        span=folioDB.folioCreated
+                        if folioDB.folioDescription
+                            span=folioDB.folioDescription
+                        else    
+                            span
+                        a(href=`/user/profile/${String(folioDB.master)}`) 
+                            span 아티스트 #{folioDB.masterName}
+                    include ../partials/folio/userSNS.pug
+                    //-     //- div x 1
+
+                    include ../partials/folio/userFollow.pug
+
+                    include ../partials/folio/userProject.pug
+                div.folioProfile__cover
+                    div.cover__container
+                        div
+                            img.cover(src=`/${folioDB.shortcutUrl}`)
+        div.form__content-grid
+            include ../partials/folio/userFollowing.pug
+
+            include ../partials/folio/userFollowed.pug
+
+            div.form__content
+                div
+                    div.folio__imageDiv
+                        if folioDB.folioImageArray[0]===undefined
+                            //- span folioIMageDB 가 없음
+                            span 이미지 파일이 없습니다.
+                            if loggedIn
+                                if loggedInUser._id===String(folioDB.master)
+                                    button(type="button").imageUploadBtn 추가하기
+                                else
+                                    span.imageUploadBtn
+                            else 
+                                span.imageUploadBtn
+                        else
+                            each folioImage in folioDB.folioImageArray
+                                +folioImage(folioImage)
+                            if loggedIn
+                                if loggedInUser._id===String(folioDB.master)
+                                    button(type="button").imageUploadBtn 추가하기
+                                else
+                                    span.imageUploadBtn
+                            else 
+                                span.imageUploadBtn
+                    div
+                        div.folio__imageUpload.control__display-none
+                            input.imageUploadTarget(name="target", type="text", placeholder="이미지 제목을 입력하세요")
+                            input.imageUploadSubmit(name="submit", type="submit", value="이미지 업로드")
+                            button(type="button").imageUploadCancel 취소하기
+
+    script(src="/static/js/folio.js")
+    script(src="/static/js/profileFollow.js")

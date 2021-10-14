@@ -2,7 +2,7 @@ extends ../../base/base.pug
 
 block content
     include ../partials/access/change/changeJoin.pug
-    form(method="POST").form__access
+    form(method="POST", enctype="multipart/form-data").form__access
         span.access__inner.access__title #{Title}
         div.access__inner
             label(for="username") 이름
@@ -22,6 +22,12 @@ block content
             input(name="age", type="number", min=1, placeholder="나이", required, value=age)
         div.access__inner
             include ../partials/access/select/selectStatus.pug
+
+        div.access_inner
+            br
+            input(name="avatar", type="file", accept="image/*", id="avatar", required)
+            br
+            br
 
         div.access__create
             input(name="create", type="submit", value="계정 생성")

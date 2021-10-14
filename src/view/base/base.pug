@@ -17,13 +17,13 @@ html(lang="kr")
                     a(href="/").header__Subtitle Life Folio
                     span.header__Title #{folioDB.folioName}
             else
-                a(href="/").header__Title Life Folio
+                a(href="/").header__Title LIFE FOLIO
 
             if Message
                 span.header_Message #{Message}
             else
                 span.header__Error 서버 오류
-
+            
         //- main 컨텐츠 박스
         main#main
             if error

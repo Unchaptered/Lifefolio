@@ -1,0 +1,24 @@
+div.form__content.userProfile__following.control__display-none
+    if userDB.followingNameArray[0]!==undefined
+        - var BBB = 0;
+        div.following__flex
+            while BBB < followingLength
+                div.following__size
+                    if loggedIn
+                        if loggedInUser
+                            button(type="button").following__sort 아티스트 
+                        else
+                            button(type="button").following__sort 불투명 
+                    else
+                        button(type="button").following__sort 게스트 
+                    button.following__username #{userDB.followingNameArray[BBB]} 
+                    a.following__btn(href=`/user/profile/${userDB.followingArray[BBB]}`)
+                        svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
+                            path(d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z")
+                        span FEED
+                span.control__display-none #{BBB++}
+    else
+        div
+            span 팔로우 중인 아티스트가 없습니다
+            br
+            a(href="/search")  다른 아티스트를 찾아보는 건 어떨까요?
