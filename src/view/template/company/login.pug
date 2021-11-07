@@ -2,17 +2,13 @@ extends ../../base/base.pug
 
 block content
     include ../partials/access/change/changeLogin.pug
-    form(method="POST").form__access
-        span.access__inner.access__title #{Title}
-        div.access__inner
-            label(for="username") 이름/이메일
-            input(name="username",type="text", placeholder="관리자 이름 또는 관리자 이메일", required, value=username)
-        div.access__inner
-            label(for="password") 비밀번호
-            input(name="password",type="password", placeholder="비밀번호", required)
-        div.access__inner.access__checkbox
-            label(for="makeCookie") 자동로그인
-            input(name="makeCookie", type="checkbox")
-        div.access__create
-            input(name="create", type="submit", value="로그인")
+    form#company__login(method="POST").form__access
+        span#access__Title #{Title}
+        label(for="username") 이름/이메일
+        input(name="username",type="text", placeholder="관리자 이름 또는 관리자 이메일", required, value=username)
+        label(for="password") 비밀번호
+        input(name="password",type="password", placeholder="비밀번호", required)
+        label(for="makeCookie") 자동로그인
+        input(name="makeCookie", type="checkbox")
+        input(name="create", type="submit", value="로그인")
     include ../partials/access/link/linkLogin.pug

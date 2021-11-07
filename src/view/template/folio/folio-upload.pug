@@ -1,19 +1,21 @@
 extends ../../base/base.pug
+include ../mixins/userFolioList.pug
 
 block content
-    form(method="POST", enctype="multipart/form-data").form__access1
-        div.access__flex
-            header.access__title #{Title}
+    form#folio__upload(method="POST", enctype="multipart/form-data")
+        span#access__Title #{Title}
+        label(for="folioName") 이름
+        input(name="folioName",type="text", placeholder="포트폴리오 이름", required, value=username)
+        label(for="folioDescription") 설명
+        input(name="folioDescription",type="text", placeholder="포트폴리오 설명 (선택사항)", maxlenght=30, value=username)
 
-            label(for="folioName") 이름
-            input(name="folioName",type="text", placeholder="포트폴리오 이름", required, value=username)
+        include ../partials/access/select/selectMajorFolio.pug
+        include ../partials/access/select/selectStatusFolio.pug
 
-            label(for="folioDescription") 설명
-            input(name="folioDescription",type="text", placeholder="포트폴리오 설명 (선택사항)", maxlenght=30, value=username)
+        label.access(for="shortcut") 표지 선택
+        input(name="shortcut", type="file", accept="image/*", id="shortcut")
 
-            label 표지
-            label.access(for="shortcut") 파일 선택
-            input(name="shortcut", type="file", accept="image/*", id="shortcut")
+        input(name="create", type="submit", value="포트폴리오 생성")
+        span(id="access__Description") 한 번 생성한 포트폴리오는 당신의 창작물을 보관해줄 것입니다.
 
-            input(name="create", type="submit", value="포트폴리오 생성")
-            span 한 번 생성한 포트폴리오는 당신의 창작물을 보관해줄 것입니다.
+    script(src="/static/js/folioUpload.js")

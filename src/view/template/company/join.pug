@@ -2,22 +2,16 @@ extends ../../base/base.pug
 
 block content 
     include ../partials/access/change/changeJoin.pug
-    form(method="POST").form__access
-        span.access__inner.access__title #{Title}
-        div.access__inner
-            label(for="username") 이름
-            input(name="username",type="text", placeholder="유저 이름", required, value=username)
-        div.access__inner
-            label(for="email") 이메일
-            input(name="email",type="email", placeholder="이메일", required, value=email)
-        div.access__inner
-            label(for="password") 비밀번호
-            div
-                input(name="password",type="password", placeholder="비밀번호", required)
-                input(name="password2",type="password", placeholder="비밀번호 확인", required)
-        div.access__inner
-            label(for="") 직종
-            input(name="job", type="text", placeholder="직업", required, value=job)
-        div.access__create
-            input(name="create", type="submit", value="계정 생성")
+    form#company__join(method="POST").form__access
+        span#access__Title #{Title}
+        label(for="username") 이름
+        input(name="username",type="text", placeholder="유저 이름", required, value=username)
+        label(for="email") 이메일
+        input(name="email",type="email", placeholder="이메일", required, value=email)
+        label(for="password") 비밀번호
+        input(name="password",type="password", placeholder="비밀번호", required)
+        input(name="password2",type="password", placeholder="비밀번호 확인", required)
+        label(for="") 직종
+        input(name="job", type="text", placeholder="직업", required, value=job)
+        input(name="create", type="submit", value="계정 생성")
     include ../partials/access/link/linkJoin.pug

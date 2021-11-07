@@ -1,117 +1,19 @@
 mixin folio(folio)
     if folio.shortcutView===true
-        div.form__folio 
-            div.folio__contentBox
-                // 표지 95% 95% (마진 2.5% 상하좌우)
-                a.coverData(href=`/folio/${folio._id}`)
+        div.access__folioCover 
+            div
+                a(href=`/folio/${folio._id}`)
                     img(src=`/${folio.shortcutUrl}`)
     else
-        div.form__folio-grid
-            div.folio__contentBoxGrid
-                // 표지 20% 2
-                div.headerData
+        div.access__folioUncover
+            div
+                div
                     a(href=`/folio/${folio._id}`)
                         header=folio.folioName
-                // 메타 30% 3
-                div.metaData
-                    span=folio.folioCreated
+                div
                     if folio.folioDescription
                         span=folio.folioDescription
                     else    
                         span
                     a(href=`/user/profile/${String(folio.master)}`) 
-                        span 아티스트 #{folio.masterName}
-                // 프리뷰 100% 10
-                //- div.preview
-                //-     if loggedIn
-                //-         if String(folio.master)===loggedInUser._id
-                //-             if folio.folioImageNameArray[0]!==null
-                //-                 div.preview-border
-                //-                     a(href=`/folio/${folio._id}`)
-                //-                         svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                             path(fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd")
-                //-             else
-                //-                 div
-                //-                     img(src=`/${folio.folioImageArray[0].folioImagesUrl}`)
-                //-                 if folio.folioImageNameArray[1]!==null
-                //-                     div.preview-border
-                //-                         a(href=`/folio/${folio._id}`)
-                //-                             svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                                 path(fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd")
-                //-                 else
-                //-                     div
-                //-                         img(src=`/${String(folio.folioImageArray[1])}`)
-                //-                     if folio.folioImageNameArray[2]!==""
-                //-                         div.preview-border
-                //-                             a(href=`/folio/${folio._id}`)
-                //-                                 svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                                     path(fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd")
-                //-                     else
-                //-                         div
-                //-                             img(src=`/${String(folio.folioImageArray[2])}`)
-                //-                         if folio.folioImageNameArray[3]!==""
-                //-                             div.preview-border
-                //-                                 a(href=`/folio/${folio._id}`)
-                //-                                     svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                                         path(fill-rule="evenodd" d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V7.414A2 2 0 0015.414 6L12 2.586A2 2 0 0010.586 2H6zm5 6a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V8z" clip-rule="evenodd")
-                //-                         else
-                //-                             div
-                //-                                 img(src=`/${String(folio.folioImageArray[3])}`)
-                //-         else
-                //-             if folio.folioImageNameArray[0]!==""
-                //-                 div.preview-border
-                //-                     svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                         path(fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd")
-                //-             else
-                //-                 div
-                //-                     img(src=`/${String(folio.folioImageArray[0])}`)
-                //-                 if folio.folioImageNameArray[1]!==""
-                //-                     div.preview-border
-                //-                         svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                             path(fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd")
-                //-                 else
-                //-                     div
-                //-                         img(src=`/${String(folio.folioImageArray[1])}`)
-                //-                     if folio.folioImageNameArray[2]!==""
-                //-                         div.preview-border
-                //-                             svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                                 path(fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd")
-                //-                     else
-                //-                         div
-                //-                             img(src=`/${String(folio.folioImageArray[2])}`)
-                //-                         if folio.folioImageNameArray[3]!==""
-                //-                             div.preview-border
-                //-                                 svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                                     path(fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd")
-                //-                         else
-                //-                             div
-                //-                                 img(src=`/${String(folio.folioImageArray[3])}`)
-                //-     else
-                //-         if folio.folioImageNameArray[0]!==""
-                //-             div.preview-border
-                //-                 svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                     path(fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd")
-                //-         else
-                //-             div
-                //-                 img(src=`/${String(folio.folioImageArray[0])}`)
-                //-             if folio.folioImageNameArray[1]!==""
-                //-                 div.preview-border
-                //-                     svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                         path(fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd")
-                //-             else
-                //-                 div
-                //-                     img(src=`/${String(folio.folioImageArray[1])}`)
-                //-                 if folio.folioImageNameArray[2]!==""
-                //-                     div.preview-border
-                //-                         svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                             path(fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd")
-                //-                 else
-                //-                     div
-                //-                         img(src=`/${String(folio.folioImageArray[2])}`)
-                //-                     if folio.folioImageNameArray[3]!==""
-                //-                         div.preview-border
-                //-                             svg(xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor")
-                //-                                 path(fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd")
-                //-                     else
-                //-                         div
-                //-                             img(src=`/${String(folio.folioImageArray[3])}`)
+                        span #{folio.masterName}

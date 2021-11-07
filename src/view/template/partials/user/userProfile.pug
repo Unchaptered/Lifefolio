@@ -1,7 +1,8 @@
-div.userProfile__img
+div#access__userImg
     img(src=`/${userDB.avatarUrl}`)
-div.userProfile__meta
-    strong=userDB.username
+div#access__userMeta
+    div
+        strong=userDB.username 
         if loggedIn
             if loggedInUser._id===String(userDB._id)
                 a.userProfile__modify(href=`/user/profile/${loggedInUser._id}/edit`) 정보 수정
@@ -12,33 +13,42 @@ div.userProfile__meta
     include ../access/view/viewMajor.pug
     include ../access/view/viewStatus.pug
     
+    
     //- if userDB.accountCreated
     //-     span from #{userDB.accountCreated}
     //- else
     //-     span from 0000.00.00.00
-div.userProfile__descript
+form#access__userDescript
+    div#modifyForm
     if userDB.accountDescription
-        span.dsecript__value #{userDB.accountDescription}
         if loggedIn
             if loggedInUser._id===String(userDB._id)
-                button(type="button").descript__modify 수정하기
+                //-동일 유저
+                span#modifyValueBef #{userDB.accountDescription}
+                button#modifyDescBtn 수정하기
             else
-                span.descript__modify
+                //-다른 유저
+                span#modifyValueBef #{userDB.accountDescription}
         else
-                span.descript__modify
+            //-익명
+            span#modifyValueBef #{userDB.accountDescription}
     else
-        span.dsecript__value 자기소개를 작성해주세요.
         if loggedIn
             if loggedInUser._id===String(userDB._id)
-                button(type="button").descript__modify 수정하기
+                //-동일 유저
+                span#modifyValueBef.modifyValueBefNope 자기소개를 작성해주세요
+                button(type="button")#modifyDescBtn 수정하기
             else
-                span.descript__modify
+                //-다른 유저
+                span#modifyValueBef
         else
-            span.descript__modify
-    div.dscript__modifyDiv.control__display-none
-        input.descript__modifyValue(name="accountDescription", type="text", value=`${userDB.accountDescription}`,placeholder="자기소개를 작성해주세요.", max-length=50)
-        input.descript__modifySubmit(name="accountDescriptionSubmit", type="submit", value="수정")
-        button(type="button").descript__modifyCanccel 취소
+            //-익명
+            span#modifyValueBef
 
+    div#modifyInputDiv.control-DisplayNone
+        input#modifyValueAft(name="accountDescription", type="text", value=`${userDB.accountDescription}`,placeholder="자기소개를 작성해주세요.", max-length=50)
+        input#modifyDescSubmit(name="accountDescriptionSubmit", type="submit", value="수정")
+        button#modifyDescCacnel(type="button") 취소
 
 script(src="/static/js/profile.js")
+script(src="/static/js/profileEditSimple.js")

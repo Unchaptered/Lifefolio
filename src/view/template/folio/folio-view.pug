@@ -2,21 +2,37 @@ extends ../../base/base.pug
 include ../mixins/userFolioImage.pug
 
 block content
-    form.screen__folio(method="POST", enctype="multipart/form-data")
+    div#folio__images
+        a.image__folioLink(href=`/search`) 서치
+        a.image__folioLink(href=`/user/profile/${folioDB.master}`) 프로필
+        br
+        br
 
-    div#folioImageUploadDiv.control__display-none
-        form(method="POST", enctype="multipart/form-data").form__access1
-            div.access__flex
-                header.access__title 사진 업로드
+        div#image__masonry
+            each folioImage in folioDB.folioImageArray
+                +folioImage(folioImage)
+            else
+                span
+        div#image__more
+            button(type="button")#image__moreBtn 이미지 더보기
 
-                label(for="folioImageName") 이름
-                input(name="folioImageName",type="text", placeholder="포트폴리오 이름", required, value=username)
+        div#iamge__upload.control-DisplayNone
+            div
+                form(method="POST", enctype="multipart/form-data")
+                    span#access__Title 사진 업로드
 
-                label 작업물
-                label.access(for="folioImage") 파일 선택
-                input(name="folioImage", type="file", accept="image/*", id="folioImage")
+                    label(for="folioImageName") 이름
+                    input(name="folioImageName",type="text", placeholder="포트폴리오 이름", value=username)
+                    include ../partials/access/select/selectMajorImage.pug
+                    include ../partials/access/select/selectStatusImage.pug
+                    label(for="folioImage") 파일 선택
+                    input(name="folioImage", type="file", accept="image/*", id="folioImage")
 
-                input(name="create", type="submit", value="사진 업로드")
-                span 한 번 생성한 포트폴리오는 당신의 창작물을 보관해줄 것입니다.
+                    input(name="create", type="submit", value="사진 업로드")
+                    span#access__Description 이름을 정하지 않으면 "untitle" 으로 생성됩니다.
 
-    script(src="/static/js/folioView.js")
+        //- script(src="/static/js/folioView.js") >> searchResultImage.js >> folioUloadImage.js
+        script(src="/static/js/folioUloadImage.js")
+
+        script(src="/static/js/masonry.js")
+        script(src="/static/js/masonryFake.js")

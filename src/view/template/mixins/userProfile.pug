@@ -1,51 +1,14 @@
 mixin user(user)
-    div.conditions__user__mixins
-        a(href=`/user/profile/${user._id}`)
-            div.conditions__user__meta
-                span=user.username
-                div
-                    case (user.major)
-                        when 0
-                            span 만화가, 애니메이터
-                        when 1
-                            span 일러스트레이터
-                        when 2
-                            span 포토그래퍼
-                        when 3
-                            span 화가
-                        when 4
-                            span 조각가
-                        when 5
-                            span 수,공예가
-                        when 5
-                            span 폰트 디자이너
-                        when 6
-                            span 그래픽 디자이너
-                        when 7
-                            span 출판,편집 디자이너
-                        when 8
-                            span 광고,시각 디자이너
-                        when 9
-                            span 의류,패션 디자이너
-                        when 10 
-                            span 잡화,제품 디자이너
-                        when 11 
-                            span 전시, 공간 디자이너
-                        when 12 
-                            span 웹 다자이너
-                        when 13 
-                            span 영상 디자이너
-                        when 14 
-                            span 미분류
-                    case (user.statusNow)
-                        when 0
-                            span 구경 중
-                        when 1
-                            span 공부 중
-                        when 2
-                            span 구직 중
-                        when 3
-                            span 외주 중
-        a(href=`/user/profile/${user._id}`)
-            div.conditions__user__image
+    div.user__itmes
+        div.user__image
+            a(href=`/user/profile/${user._id}`)
                 img(src=`/${user.avatarUrl}`)
+        div.user__metaData
+            strong #{user.username} 
+            include ../partials/access/view/viewMajorSearch.pug
+            include ../partials/access/view/viewStatusSearch.pug
+
+        form.user__description
+            div#modifyForm
+                span #{user.accountDescription}
+    // using Search.pug

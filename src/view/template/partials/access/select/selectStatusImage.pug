@@ -1,0 +1,17 @@
+label(for="statusNow").selectStatus__label 현재상태
+case folioDB.masterStatusNow
+    when 99
+        input(type="hidden", name="statusNow", value=0, readonly)
+        input(placeholder="-", type="text", disabled)
+    when 0
+        input(type="hidden", name="statusNow", value=1, readonly)
+        input(placeholder="구경 중", type="text", disabled)
+    when 1
+        input(type="hidden", name="statusNow", value=2, readonly)
+        input(placeholder="구경 중", type="text", disabled)
+    when 2
+        input(type="hidden", name="statusNow", value=3, readonly)
+        input(placeholder="구경 중", type="text", disabled)
+    when 3
+        input(type="hidden", name="statusNow", value=4, readonly)
+        input(placeholder="구경 중", type="text", disabled)

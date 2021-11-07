@@ -1,10 +1,11 @@
-div.userMeta__Follow
-    button.followingViewBtn(type="button") #{userDB.followingNameArray.length} 팔로잉
-    button.followedViewBtn(type="button") #{userDB.followedNameArray.length} 팔로워
+div#access__userFollow
+    button#followingViewBtn(type="button") #{userDB.followingNameArray.length} 팔로잉
+    button#followedViewBtn(type="button") #{userDB.followedNameArray.length} 팔로워
     if loggedIn
-        if loggedInUser._id!==String(userDB._id)
-            a(href=`/user/profile/${userDB._id}/follow`) 팔로잉하기
+        if loggedInUser._id===String(userDB._id)
+            button#likeViewBtn(type="button") #{userDB.likeImageNameArray.length} 관심사
         else
-            a
+            span#likeViewBtn
+            a(href=`/user/profile/${userDB._id}/follow`) 팔로잉하기
     else
-        a
+        span#likeViewBtn
