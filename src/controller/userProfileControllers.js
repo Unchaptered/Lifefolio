@@ -25,6 +25,8 @@ export const profileGet=async(req,res)=>{
         const userDB=await userModel.findById(id).populate("folioArray");
         const followingLength=userDB.followingNameArray.length;
         const followedLength=userDB.followedNameArray.length;
+        const likeFolioLength=userDB.likeFolioNameArray.length;
+        const likeImageLength=userDB.likeImageNameArray.length;
         return res.render("template/user/profile", {
             Title: renSetup[0].Title,
             Message: renSetup[0].Message,
@@ -32,6 +34,8 @@ export const profileGet=async(req,res)=>{
             userDB,
             followingLength,
             followedLength,
+            likeFolioLength,
+            likeImageLength
         });
     // } catch {
     //     return res.redirect("/");

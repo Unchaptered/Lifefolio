@@ -107,7 +107,7 @@ export const loginPost=async(req,res)=>{
         req.session.loggedIn=true;
         req.session.admin=adminDB;
 
-        console.log(req.session);
+        // console.log(req.session);
         return res.redirect("/");
     } catch(error) {
         return res.status(400).redirect("/admin/login");

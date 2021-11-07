@@ -35,7 +35,7 @@ export const uploadPost=async(req,res)=>{
     try{
         const {
             session:{ user:{ _id } },
-            body: { folioName, folioDescription }
+            body: { folioName, folioDescription, major:masterMajor ,statusNow:masterStatusNow }
         }=req;
 
         const userDB=await userModel.findById({_id});
@@ -50,11 +50,14 @@ export const uploadPost=async(req,res)=>{
                 folioDescription, 
                 // Master(owner) Data
                 master:_id,
-                masterName:userDB.username
+                masterName:userDB.username,
+                masterMajor,
+                masterStatusNow,
             })
         } else {
             // console.log("file isn't undefined");
             const{ path:shortcutUrl }=req.file;
+            // console.log(req.file);
             folioDB=await folioModel.create({
                 // Baisc Data
                 folioName,
@@ -67,6 +70,7 @@ export const uploadPost=async(req,res)=>{
                 masterName:userDB.username
             });
         }
+
         userDB.folioArray.push(folioDB._id);
         userDB.folioNameArray.push(folioDB.folioName);
         await userDB.save();

@@ -108,7 +108,7 @@ export const loginPost=async(req,res)=>{
         req.session.loggedIn=true;
         req.session.company=companyDB;
 
-        console.log(req.session);
+        // console.log(req.session);
         return res.redirect("/");
     } catch(error) {
         return res.status(400).redirect("/company/login");
