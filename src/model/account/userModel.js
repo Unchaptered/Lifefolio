@@ -8,7 +8,7 @@ const userSchema=new mongoose.Schema({
     password: { type:String, required: true},
     age: { type:Number, required: true},
     major: { type:Number, required: true, default:15 },
-    statusNow: { type:Number, required:true , default:0},
+    statusNow: { type:Number, required:true , default:1},
     avatarUrl: { type:String, reqruired:true, default:"none"},
     // Meta Data
     accountDescription: { type:String },
@@ -21,13 +21,15 @@ const userSchema=new mongoose.Schema({
     followedArray: [ {type:mongoose.Schema.Types.ObjectId, ref:"User"} ],
     followedNameArray: [ { type:String }],
     // Folio
-    folioArray: [ { type:mongoose.Schema.Types.ObjectId, ref:"Folio" } ],
-    folioNameArray: [ { type:String } ],
-    folioImageArray: [ { type:mongoose.Schema.Types.ObjectId, ref:"FolioImage" } ],
-    folioImageNameArray: [ { type: String } ],
-    // Attention
-    attentionArray: [ { type:mongoose.Schema.Types.ObjectId, ref:"Folio" } ],
-    attentionNameArray: [ { type:String } ],
+    folioArray: [{ type:mongoose.Schema.Types.ObjectId, ref:"Folio" }],
+    folioNameArray: [{ type:String }],
+    folioImageArray: [{ type:mongoose.Schema.Types.ObjectId, ref:"FolioImage" }],
+    folioImageNameArray: [{ type: String }],
+    // like
+    likeFolioArray: [{ type:mongoose.Schema.Types.ObjectId, ref:"Folio" }],
+    likeFolioNameArray: [{ type:String }],
+    likeImageArray: [{ type:mongoose.Schema.Types.ObjectId, ref:"FolioImage" }],
+    likeImageNameArray: [{ type:String }],
 })
 
 userSchema.pre("save", async function() {

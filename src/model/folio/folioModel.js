@@ -12,13 +12,14 @@ const folioSchema=new mongoose.Schema({
     // Master(Owner) Data
     master: { type: mongoose.Schema.Types.ObjectId, requried: true, ref: "User" },
     masterName: { type:String, required:true },
+    masterMajor: { type:Number, required: true, default:15 },
+    masterStatusNow: { type:Number, required:true , default:0},
     // FolioImages Data
-    folioImageArray: [
-        { type:mongoose.Schema.Types.ObjectId, ref: "FolioImage" },
-    ],
-    folioImageNameArray: [
-        { type:String }
-    ],
+    folioImageArray: [{ type:mongoose.Schema.Types.ObjectId, ref: "FolioImage" }],
+    folioImageNameArray: [{ type:String }],
+    // Attention
+    likedUserArray: [{ type:mongoose.Schema.Types.ObjectId, ref: "User" }],
+    likedUserNameArray: [{ type:String }]
 });
 
 const folioModel=mongoose.model("Folio",folioSchema);
