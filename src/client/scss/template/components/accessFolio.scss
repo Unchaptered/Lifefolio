@@ -1,0 +1,72 @@
+/* overfolow attributes
+      visible : 내용이 흘러넘침
+      hidden : 내용이 잘리는 부분은 자르기
+      scroll : 항상 스크롤바 노출
+      auto : 내용이 잘릴 때만 스크롤바 노출
+*/
+.access__folioCover {
+  overflow: hidden;
+  /* overfolow attributes
+      visible : 내용이 흘러넘침
+      hidden : 내용이 잘리는 부분은 자르기
+      scroll : 항상 스크롤바 노출
+      auto : 내용이 잘릴 때만 스크롤바 노출
+    */
+  position: relative;
+  padding-top: 150%;
+  width: 100%;
+  height: 0;
+  margin-bottom: 20px;
+  @include controlContent;
+  border: none;
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    & > a > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  @include coverContentReverse;
+}
+.access__folioUncover {
+  position: relative;
+  @include controlContent;
+  @include coverContentReverse;
+  padding-top: 150%;
+  width: 100%;
+  height: 0;
+  @media screen and (min-width: 1200px) {
+    padding-top: 150%;
+  }
+  @media screen and (max-width: 600px) {
+    padding-top: 150%;
+  }
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template: repeat(15, minmax(1fr, 0)) / repeat(1, 1fr);
+
+    & > div:nth-child(1) {
+      grid-row: 1/3;
+      text-align: center;
+      @include flexCenterCenter;
+    }
+    & > div:nth-child(2) {
+      grid-row: 3/6;
+      text-align: center;
+    }
+  }
+  a {
+    @include setErrorSpan;
+    text-decoration: none;
+  }
+}

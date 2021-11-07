@@ -1,0 +1,8 @@
+@import "../../config/_variablesFinal";
+
+#company__login,
+#company__join {
+  @include controlContent;
+  @include controlAccess;
+  @include controlAccessGrid;
+}

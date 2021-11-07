@@ -1,0 +1,26 @@
+@import "../../config/_variablesFinal";
+
+#access__changeJoin,
+#access__changeLogin,
+#access__changeSearch {
+  //   background-color: red;
+  @include flexCenterCenter;
+  margin-bottom: 12px;
+  button,
+  a {
+    @include setA;
+    @include setButton;
+    @include setFontSize;
+    width: auto;
+    height: 20px;
+    padding: 0;
+    margin: 0 20px;
+
+    // background-color: rgb(158, 158, 200);
+    @include flexCenterCenter;
+  }
+  button {
+    font-weight: 600;
+    color: $textChosen;
+  }
+}

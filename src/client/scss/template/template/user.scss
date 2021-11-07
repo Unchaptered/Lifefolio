@@ -1,0 +1,127 @@
+@import "../../config/_variablesFinal";
+
+#user__login,
+#user__join {
+  @include controlContent;
+  @include controlAccessGrid;
+}
+
+#user__profile {
+  width: 100%;
+  @include controlContent;
+  @include controlAccessGridTypeProfile;
+  margin-bottom: 20px;
+
+  a,
+  button {
+    @include setA;
+    @include setButton;
+    @include setErrorSpan;
+    text-decoration: none;
+    &:hover {
+      @include coverContentReverse;
+    }
+  }
+
+  & > div {
+    @include setTransition;
+  }
+  #access__userImg {
+    @include flexCenterCenter;
+    width: auto;
+    & > img {
+      width: 100%;
+      height: auto;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      opacity: 0.9;
+    }
+  }
+  #access__userMeta {
+    @include setFontSize;
+    display: flex;
+    flex-direction: column;
+    .userProfile__modify {
+      @include setErrorSpan;
+      @include coverContentReverse;
+      margin-left: 5px;
+      text-decoration: initial;
+    }
+  }
+  #access__userDescript {
+    @include setFontSize;
+    #modifyInputDiv {
+      input {
+        border: initial;
+        background-color: initial;
+      }
+      input[type="submit"] {
+        @include setErrorSpan;
+        text-decoration: initial;
+      }
+      input {
+        @include coverContentReverse;
+      }
+    }
+  }
+  #access__userSns {
+    @include setFontSize;
+  }
+  #access__userFollow {
+    @include setFontSize;
+    @include flexCenterCenter;
+  }
+  #access__userProject {
+    @include setFontSize;
+    @include flexCenterCenter;
+    svg {
+      width: $userSVG;
+    }
+  }
+}
+#access__userUpload {
+  order: 1;
+  grid-column: 1/-1;
+  @include flexCenterCenter;
+  & > div {
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include setFontSize;
+    @include controlContent;
+    & > span:nth-child(2) {
+      margin-bottom: 8px;
+    }
+    & > a {
+      @include setA;
+      @include setErrorSpan;
+      @include flexCenterCenter;
+      @include coverContentReverse;
+      svg {
+        width: 15px;
+      }
+    }
+  }
+}
+#user__portfolio {
+  width: 100%;
+  gap: 10px;
+  display: grid;
+  grid-template: repeat(1, 1fr) / repeat(4, 1fr);
+  @media screen and (max-width: 1000px) {
+    grid-template: repeat(1, 1fr) / repeat(2, 1fr);
+  }
+  @media screen and (max-width: 600px) {
+    grid-template: repeat(1, 1fr) / repeat(1, 1fr);
+  }
+}
+#access__Detail {
+  @include setButton;
+  @include coverContentReverse;
+}

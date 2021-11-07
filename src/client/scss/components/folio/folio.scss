@@ -1,5 +1,6 @@
 @import "../../config/_mixin";
 @import "../../config/_variables";
+@import "../../config/_variablesFinal";
 
 // folio.shortcutUrl 존재
 .form__folio,
@@ -18,10 +19,10 @@
   // background-color: blanchedalmond;
   .folio__contentBox {
     position: absolute;
-    top: 2.5%;
-    left: 2.5%;
-    width: 95%;
-    height: 95%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     & > .coverData > img {
       width: 100%;
       height: 100%;
@@ -29,10 +30,14 @@
     }
   }
 }
-
+.form__folio {
+  @include coverContent;
+}
 // folio.shortcutUrl 미존재
 .form__folio-grid {
   padding-top: 150%;
+  border: 1px solid black;
+  @include uncoverdCotent;
   @include standardTrnasition;
   @media screen and (min-width: 1200px) {
     padding-top: 150%;

@@ -1,0 +1,292 @@
+$textBasic: rgba(0, 0, 0, 1);
+$textError: rgba(97, 97, 195, 0.8);
+$textHover: rgba(202, 164, 164, 1);
+$textChosen: #0d610d;
+
+$navTopSVG: 20px;
+$userSVG: $navTopSVG;
+$textSizeHEADER: 30px;
+$textSizeSUBHEADER: 16px;
+
+$textSizeBIG: 18px;
+$textSizeMID: $textSizeBIG - 2px;
+$textSizeSMALL: $textSizeBIG - 4px;
+
+$inputHeightHIG: 24px;
+$inputHeightMID: $inputHeightHIG - 2px;
+$inputHeightSMALL: $inputHeightHIG - 4px;
+
+$backBasic: rgba(255, 255, 255, 1);
+$backBasic07: rgba(255, 255, 255, 0.7);
+$backHover: rgba(226, 205, 205, 1);
+
+// Basic Set
+@mixin setA {
+  color: $textBasic;
+  text-decoration: none;
+  background-color: initial;
+}
+@mixin setButton {
+  color: $textBasic;
+  border: initial;
+  background-color: initial;
+}
+@mixin setInput {
+  color: $textBasic;
+  border: initial;
+  background-color: initial;
+}
+@mixin setErrorSpan {
+  color: $textError;
+  font-weight: 600;
+  text-decoration: underline;
+}
+@mixin setSVG {
+  width: 28px;
+}
+
+// Responsive Text Set
+@mixin setHeaderSize {
+  font-size: $textSizeHEADER;
+  font-weight: 600;
+  // @media screen and (max-width: 1000px) {
+  //   font-size: $textSizeSUBHEADER;
+  // }
+  // @media screen and (max-width: 500px) {
+  //   font-size: $textSizeSUBHEADER;
+  // }
+}
+@mixin setSubHeaderSize {
+  font-size: $textSizeHEADER;
+  @media screen and (max-width: 1000px) {
+    font-size: $textSizeHEADER - 1px;
+  }
+  @media screen and (max-width: 500px) {
+    font-size: $textSizeHEADER - 2px;
+  }
+}
+@mixin setFontSize {
+  font-size: $textSizeSMALL;
+  margin-bottom: $textSizeSMALL/2;
+  // @media screen and (max-width: 1000px) {
+  //   font-size: $textSizeMID;
+  //   margin-bottom: $textSizeMID/2;
+  // }
+  // @media screen and (max-width: 500px) {
+  //   font-size: $textSizeSMALL;
+  //   margin-bottom: $textSizeSMALL/2;
+  // }
+}
+@mixin setInputHeight {
+  height: $inputHeightHIG;
+  @media screen and (max-width: 1000px) {
+    height: $inputHeightMID;
+  }
+  @media screen and (max-width: 500px) {
+    height: $inputHeightSMALL;
+  }
+}
+
+// Animation
+@mixin setTransition {
+  transition: all 0.2s ease-in-out;
+}
+@mixin setTextHover {
+  color: $textHover;
+}
+@mixin setBackHover {
+  background-color: $backHover;
+}
+// contentContainer
+@mixin contentContainer {
+  padding: 40px 100px;
+  @media screen and (max-width: 1000px) {
+    padding: 30px 50px;
+    // background-color: rgb(186, 186, 209);
+  }
+  @media screen and (max-width: 500px) {
+    padding: 20px;
+    // background-color: rgb(218, 204, 179);
+  }
+}
+// coverContent
+@mixin coverContentReverse {
+  // Some kind of content, with Picture
+  border-radius: 5px;
+  opacity: 0.8;
+  @include setTransition;
+  &:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    @media screen and (max-width: 1000px) {
+      transform: scale(1.05);
+    }
+    @media screen and (max-width: 600px) {
+      transform: scale(1.05);
+    }
+  }
+}
+@mixin coverContent {
+  // Some kind of content, with Picture
+  border-radius: 5px;
+  @include setTransition;
+  &:hover {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+// uncoverContent
+@mixin uncoverdCotent {
+  // Some kind of content, whitout Picture
+  border: 1px solid black;
+  border-radius: 5px;
+  @include setTransition;
+  &:hover {
+    opacity: 0.6;
+    background-color: rgba(0, 0, 0, 0.2);
+    transform: scale(1.2);
+  }
+}
+// controlContent
+@mixin controlContent {
+  // userProfile 이나 join login 시의 템플릿 명명을 controlContent 로 한다.
+  border: 1px solid black;
+  border-radius: 5px;
+  @include setTransition();
+}
+@mixin standardPadding {
+  padding: 20px 40px 20px 25px;
+}
+@mixin controlAccess {
+  @include standardPadding;
+  min-width: 350px;
+  width: 35%;
+  height: auto;
+}
+@mixin controlAccessGrid {
+  @include standardPadding;
+  gap: 10px;
+  display: grid;
+  grid-template: repeat(1, 1fr) / repeat(4, 1fr);
+
+  span[id="access__Title"],
+  label,
+  input,
+  input::placeholder {
+    text-align: center;
+    @include setFontSize;
+    @include flexCenterCenter;
+  }
+
+  span[id="access__Title"] {
+    grid-column: 1/-1;
+    font-weight: 600;
+  }
+
+  input[type="submit"] {
+    grid-column: 2/4;
+  }
+
+  label {
+    grid-column: 1/2;
+  }
+  input {
+    width: 100%;
+    grid-column: 2/-1;
+  }
+  select[name="major"],
+  select[name="statusNow"],
+  select[name="folioNameMade"] {
+    width: 103%;
+    grid-column: 2/-1;
+  }
+  div[id="access__controlGrid"] {
+    width: 100%;
+    grid-column: 2/-1;
+
+    @include flexCenterBetween;
+  }
+  span[id="access__Description"] {
+    grid-column: 1/-1;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+@mixin controlAccessGridTypeProfile {
+  @include standardPadding;
+  width: 90%;
+  gap: 10px;
+  display: grid;
+  grid-template: repeat(3, minmax(10px, auto)) / repeat(4, 1fr);
+
+  #access__userImg {
+  }
+  #access__userMeta {
+  }
+  #access__userDescript {
+  }
+  #access__userSns {
+    grid-column: 4/-1;
+  }
+  #access__userFollow {
+    grid-column: 1/-1;
+  }
+  #access__userProject {
+    grid-column: 1/-1;
+  }
+  @media screen and (max-width: 1000px) {
+    grid-template: repeat(2, minmax(10px, auto)) / repeat(4, 1fr);
+    #access__userImg {
+    }
+    #access__userMeta {
+    }
+    #access__userDescript {
+      grid-column: 3/-1;
+    }
+    #access__userSns {
+      grid-column: 1/-1;
+    }
+    #access__userFollow {
+      grid-column: 1/-1;
+    }
+    #access__userProject {
+      grid-column: 1/-1;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    grid-template: repeat(4, minmax(10px, auto)) / repeat(2, 1fr);
+    #access__userImg {
+    }
+    #access__userMeta {
+    }
+    #access__userDescript {
+      grid-column: 1/-1;
+    }
+    #access__userSns {
+      grid-column: 1/-1;
+    }
+    #access__userFollow {
+      grid-column: 1/-1;
+    }
+    #access__userProject {
+      grid-column: 1/-1;
+    }
+  }
+}
+// display-flex
+@mixin flexCenterCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@mixin flexCenterBetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@mixin flexColumnCenterCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

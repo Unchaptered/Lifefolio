@@ -1,0 +1,30 @@
+/* folioGrid type No.1 :: seems like INASTGRAM
+    {
+        created by 2021.10.15
+    }
+*/
+
+// grid-template
+#folioGrid__back {
+  @include resetA;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  @include standardTrnasition;
+  &:hover {
+    @include standardHover;
+  }
+}
+// #folioGrid__insta {
+//   width: 100%;
+//   display: grid;
+//   gap: 15px;
+//   grid-template: repeat(2, 1fr) / repeat(4, 1fr);
+//   @media screen and (min-width: 1200px) {
+//     gap: 20px;
+//     grid-template: repeat(2, 1fr) / repeat(5, 1fr);
+//   }
+//   @media screen and (max-width: 800px) {
+//     gap: 10px;
+//     grid-template: repeat(1, auto) / repeat(2, 1fr);
+//   }
+// }

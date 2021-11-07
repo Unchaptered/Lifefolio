@@ -1,73 +1,83 @@
 // Config (variables)
 @import "./config/_reset";
+@import "./config/_mixin";
 @import "./config/_variables";
+@import "./config/_variablesFinal";
 
 // Mixins
 
 // Components
-@import "./components/header";
-@import "./components/main";
-@import "./components/search";
+// @import "./components/header";
+// @import "./components/main";
+// @import "./components/search";
 
-@import "./components/folio/folio";
+// @import "./components/folio/folio";
 
-@import "./components/access/change";
-@import "./components/access/link";
-@import "./components/access/profile";
+// @import "./components/access/change";
+// @import "./components/access/link";
+// @import "./components/access/profile";
 
-@import "./components/nav/navTop";
-@import "./components/nav/navProfile";
+// @import "./components/nav/navTop";
+// @import "./components/nav/navProfile";
 
 // Screens
-@import "./screen/access";
-@import "./screen/access1";
-@import "./screen/access2";
-@import "./screen/content";
-@import "./screen/search";
-@import "./screen/folio";
+// @import "./screen/access";
+// @import "./screen/access1";
+// @import "./screen/access2";
+// @import "./screen/content";
+// @import "./screen/search";
+// @import "./screen/folio";
+// @import "./screen/folioGrid";
+// @import "./screen/folioMasonry.scss";
 
 // Additionals
-@import "./javasrcipt";
+// @import "./javasrcipt";
+
+// Update-Final
+@import "./template/base";
+@import "./template/search";
+@import "./template/masonry/masonry";
+
+@import "./template/item/userItem";
+
+@import "./template/template/admin";
+@import "./template/template/company";
+@import "./template/template/user";
+@import "./template/template/folio";
+
+@import "./template/components/navTop";
+@import "./template/components/navBottom";
+@import "./template/components/accessChange";
+@import "./template/components/accessLink";
+@import "./template/components/accessFolio";
 
 body {
-  // height: 1200px;
-  // margin: 0px;
-  // padding: 0px;
-
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  // Basic Settings
-
-  // color: $basic__font;
-  // background-color: $basic__background;
-  // button,
-  // svg {
-  //   color: $basic__font;
-  //   background-color: $basic__background;
-  // }
-  // input::placeholder {
-  //   color: rgb(0, 0, 0);
-  // }
-  // input,
-  // select,
-  // button {
-  //   color: rgba(0, 0, 0, 1);
-  //   background-color: rgb(248, 231, 231);
-  //   height: auto;
-  //   width: auto;
-  // }
-  // input,
-  // select {
-  //   padding: 5px 10px;
-  // }
+  // @include designLight;
   svg {
     @include standardButtonSVG;
   }
 }
 
+.control-DisplayNone {
+  display: none;
+}
+.control-font600 {
+  font-weight: 600;
+}
+
 .font-600 {
   font-weight: 600;
 }
+
 .control__display-none {
   display: none;
+}
+.preventDrag {
+  -ms-user-select: none;
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
 }

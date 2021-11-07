@@ -1,0 +1,15 @@
+@import "../../config/_variablesFinal";
+
+#navBottom {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  button {
+    @include setButton;
+    @include coverContent;
+    padding: 0;
+    margin: 0;
+  }
+}

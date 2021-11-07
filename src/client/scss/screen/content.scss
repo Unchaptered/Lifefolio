@@ -1,22 +1,26 @@
 @import "../config/_mixin";
 @import "../config/_variables";
+@import "../config/_variablesFinal";
 
 .form__content {
-  // background-color: rgb(216, 166, 166);
   width: auto;
   height: auto;
 
-  border: 3px double black;
-  border-radius: 10px;
-  padding: 10px;
+  padding: 25px 10px;
 
   @include flexCenterCenter;
+  @media screen and (min-width: 1200px) {
+    padding: 30px 10px;
+  }
+  @media screen and (max-width: 800px) {
+    padding: 20px 5px;
+  }
 }
 
+$margin: 20px;
 .form__content-grid {
   display: grid;
   grid-template: repeat(1, auto) / repeat(2, 1fr);
-  $margin: 20px;
   gap: $margin;
   margin-top: $margin;
   @include standardTrnasition;
@@ -28,4 +32,7 @@
     // background-color: rgb(218, 204, 179);
     grid-template: repeat(1, auto) / repeat(1, 1fr);
   }
+}
+.form__content-grid2 {
+  margin-top: $margin;
 }

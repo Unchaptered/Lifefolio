@@ -1,0 +1,58 @@
+@import "../../config/_variablesFinal";
+
+#folio__upload {
+  @include controlContent;
+  @include controlAccessGrid;
+}
+#upload__meta {
+  @include controlContent;
+  @include controlAccessGrid;
+  select[name="folioName"] {
+    grid-column: 2/-1;
+  }
+}
+// masonry grid !!
+#folio__images {
+  width: 100%;
+  // background-color: rgb(140, 140, 189);
+  .image__folioLink {
+    margin-left: 5px;
+    margin-bottom: 10px;
+    @include setA;
+    @include coverContent;
+  }
+}
+#image__more {
+  width: 100%;
+  @include flexCenterCenter;
+}
+#image__moreBtn {
+  @include setButton;
+  @include coverContentReverse;
+  padding: 5px 10px;
+  font-weight: 600;
+  background-color: rgb(233, 233, 192);
+}
+#iamge__upload {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 300px;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+
+  & > div {
+    display: flex;
+    justify-content: center;
+    & > form {
+      min-width: 400px;
+      width: 40%;
+      max-width: 600px;
+      width: 80%;
+      height: 100%;
+      @include controlContent;
+      @include controlAccessGrid;
+    }
+  }
+}

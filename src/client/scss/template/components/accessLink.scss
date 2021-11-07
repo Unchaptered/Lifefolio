@@ -1,0 +1,9 @@
+@import "../../config/_variablesFinal";
+
+#access__linkJoin,
+#access__linkLogin {
+  margin-top: 15px;
+  a {
+    @include setA;
+  }
+}

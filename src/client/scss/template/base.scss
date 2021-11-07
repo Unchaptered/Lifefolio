@@ -1,0 +1,49 @@
+@import "../config/_variablesFinal";
+
+#header {
+  @include flexColumnCenterCenter;
+  height: 200px;
+  #header__title {
+    @include setA;
+    @include setTransition;
+    @include setHeaderSize;
+    // Responsive Font-size : 30px / 29px / 28px
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    #header__titleLike {
+      @include setSVG;
+      position: absolute;
+      bottom: -5px;
+      padding-left: 5px;
+    }
+  }
+  #header__message {
+    @include setFontSize;
+    // Responsive Font-size : 16px / 15px / 14px
+  }
+  #header__subtitle {
+    @include setA;
+    @include setTransition;
+    transform: translateX(15px);
+    font-size: 14px;
+    text-align: center;
+    // Responsive Font-size : 16px / 15px / 14px
+  }
+  #header__error {
+    // Cannot Call page.json
+    @include setErrorSpan;
+  }
+}
+
+#main {
+  @include flexColumnCenterCenter;
+  @include setTransition;
+
+  @include contentContainer;
+  #main__error {
+    // Some kind of error!!!
+    @include setErrorSpan;
+    @include flexCenterCenter;
+  }
+}

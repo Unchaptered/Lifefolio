@@ -1,5 +1,6 @@
 // Responsive Settings
-@import "../config/mixin";
+@import "../config/_mixin";
+@import "../config/_variablesFinal";
 
 #main {
   // background-color: rgb(228, 197, 197);
@@ -8,6 +9,7 @@
   flex-direction: column;
 
   @include standardTrnasition;
+  // @include design;
   @media screen and (max-width: 1000px) {
     // background-color: rgb(186, 186, 209);
 

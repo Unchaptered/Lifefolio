@@ -1,0 +1,95 @@
+#image__masonry {
+  width: 100%;
+  .image__items {
+    position: relative;
+    width: 24%;
+    margin: 0.25%;
+    // background-color: blue;
+    @media screen and (max-width: 1400px) {
+      width: 32%;
+      margin: 0.5%;
+    }
+    @media screen and (max-width: 800px) {
+      width: 48%;
+      margin: 1%;
+    }
+    @media screen and (max-width: 600px) {
+      width: 100%;
+    }
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.image__meta {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90%;
+  padding: 0 5%;
+  background-color: rgba(246, 246, 233, 0.9);
+  // background-color: red;
+  @include flexCenterBetween;
+  .image__metaDiv {
+    @include flexCenterCenter;
+    // background-color: lightcoral;
+    header {
+      font-weight: 600;
+      margin-right: 10px;
+    }
+    span {
+      font-size: 14px;
+      opacity: 0.9;
+      color: rgb(29, 29, 29);
+    }
+    button,
+    a {
+      @include setA;
+      @include setButton;
+      min-width: 30px;
+      width: auto;
+      .image__heart {
+        display: initial;
+      }
+      .image__heartFull {
+        display: none;
+      }
+      &:hover {
+        .image__heart {
+          display: none;
+        }
+        .image__heartFull {
+          display: initial;
+        }
+      }
+    }
+  } // end of image__metaDiv standard
+} // end of image__meta
+// #image__masonry {
+//   width: 100%;
+//   // background-color: lavenderblush;
+//   .image__items {
+//     z-index: 1;
+//     position: relative;
+//     width: 46%;
+//     margin: 0 2%;
+//     margin-bottom: 10px;
+//     background-color: palevioletred;
+//     @media screen and (min-width: 1200px) {
+//       width: 23%;
+//       margin: 0 1%;
+//       margin-bottom: 10px;
+//       background-color: black;
+//     }
+//     @media screen and (max-width: 800px) {
+//       width: 100%;
+//       margin: 0;
+//       margin-bottom: 10px;
+//       background-color: rgb(128, 108, 108);
+//     }
+//     & > img {
+//       width: 100%;
+//     }
+//   } // end of image__items (mixins)
+// }

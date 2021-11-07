@@ -1,0 +1,58 @@
+@import "../config/_variablesFinal";
+
+#search {
+  @include controlContent;
+  @include controlAccess;
+  @include controlAccessGrid;
+  margin-bottom: 20px;
+}
+#search__targetUser {
+  width: 100%;
+  display: grid;
+  gap: 21px;
+  grid-template: repeat(1, 1fr) / repeat(4, 1fr);
+  @media screen and (max-width: 1400px) {
+    gap: 14px;
+    grid-template: repeat(1, 1fr) / repeat(3, 1fr);
+  }
+  @media screen and (max-width: 1000px) {
+    gap: 7px;
+    grid-template: repeat(1, 1fr) / repeat(2, 1fr);
+  }
+  @media screen and (max-width: 600px) {
+    gap: 0;
+    grid-template: repeat(1, 1fr) / repeat(1, 1fr);
+  }
+}
+#search__targetFolio {
+  width: 100%;
+  gap: 10px;
+  display: grid;
+}
+#search__targetImage {
+  width: 100%;
+  // masonry 의존 그리드 구성x
+}
+
+.column1 {
+  grid-template: repeat(1, 1fr) / repeat(1, 1fr);
+}
+.column2 {
+  grid-template: repeat(1, 1fr) / repeat(2, 1fr);
+}
+.column3 {
+  display: grid;
+  grid-template: repeat(1, 1fr) / repeat(3, 1fr);
+}
+.column4 {
+  display: grid;
+  grid-template: repeat(1, 1fr) / repeat(4, 1fr);
+}
+.column5 {
+  display: grid;
+  grid-template: repeat(1, 1fr) / repeat(5, 1fr);
+}
+.column6 {
+  display: grid;
+  grid-template: repeat(1, 1fr) / repeat(6, 1fr);
+}

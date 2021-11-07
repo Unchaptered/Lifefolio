@@ -5,9 +5,11 @@
 // for grid
 .form__profile {
   display: grid;
+  width: 100%;
   grid-template: repeat(3, minmax(10px, auto)) / repeat(4, 1fr);
   gap: 10px;
   //   background-color: rgb(223, 197, 197);
+  @include controlContent;
   & > .userProfile__img {
     grid-row: 1/2;
     grid-column: 4/-1;
@@ -236,7 +238,8 @@
 
 // for design
 .userProfile__following,
-.userProfile__followed {
+.userProfile__followed,
+.userProfile__like {
   .following__flex,
   .followed__flex {
     @include flexCenterCenter;

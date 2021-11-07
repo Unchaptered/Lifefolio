@@ -1,0 +1,78 @@
+@import "../../config/_variablesFinal";
+
+// for grid
+.user__itmes {
+  width: 100%;
+  height: 100%;
+
+  display: grid;
+  grid-template: repeat(2, minmax(0, auto)) / repeat(2, 1fr);
+  & > .user__image {
+    grid-row: 1 /3;
+  }
+  & > .user__metaData {
+    grid-row: 1/2;
+    grid-column: 2/-1;
+  }
+  & > .user__description {
+    grid-row: 2/-1;
+    grid-column: 2/-1;
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (max-width: 1400px) {
+    grid-template: repeat(3, minmax(0, auto)) / repeat(2, 1fr);
+    & > .user__description {
+      grid-row: 3/-1;
+      grid-column: 1/-1;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    grid-template: repeat(3, minmax(0, auto)) / repeat(1, 1fr);
+    & > .user__metaData {
+      grid-row: 3/4;
+      grid-column: 1/-1;
+    }
+    & > .user__description {
+      grid-row: 4/-1;
+      grid-column: 1/-1;
+    }
+  }
+}
+.user__itmes {
+  @include setTransition;
+}
+.user__image {
+  position: relative;
+
+  padding-top: 100%;
+  width: 100%;
+  height: 0;
+  a {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.user__metaData {
+  padding-top: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  strong {
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+}
+.user__description {
+  padding: 10px;
+  padding-bottom: 10px;
+}

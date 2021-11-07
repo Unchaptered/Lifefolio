@@ -1,0 +1,63 @@
+@import "../../config/_variablesFinal";
+
+#navTop {
+  // position
+  z-index: 99;
+  position: fixed;
+
+  // Size
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+
+  // display
+  display: flex;
+  align-items: center;
+  background-color: $backBasic;
+  a,
+  button,
+  svg {
+    padding: 0;
+    margin: 0;
+    color: initial;
+    border: initial;
+    background-color: initial;
+  }
+  a {
+    @include setA;
+  }
+  button {
+    @include setButton;
+  }
+  svg {
+    margin-right: 5px;
+    width: $navTopSVG;
+    @include coverContentReverse;
+    background-color: $backBasic;
+  }
+  // & > a,
+  // & > button {
+  //   @include setA;
+  //   @include setButton;
+  //   padding: 0;
+  //   margin: 0;
+
+  //   width: 30px;
+  //   height: 30px;
+  //   & > svg {
+  //     width: $navTopSVG;
+  //     height: 30px;
+  //   }
+  // }
+}
+/*  Sort of Button
+    #navTop__settings,
+    #navTop__search,
+    #navTop__folioUpload,
+    #navTop__folioImageUpload,
+    #navTop__myprofile,
+    #navTop__logout,
+    #navTop__login,
+    #navTop__join,
+    #navTop__log
+*/
