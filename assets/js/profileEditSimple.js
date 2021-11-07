@@ -16,17 +16,17 @@
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar Controls = [\"control__display-none\", \"font-600\"];\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Controls);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/controls.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar Controls = [\"control-DisplayNone\", \"control-font600\"];\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Controls);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/controls.js?");
 
 /***/ }),
 
-/***/ "./src/client/js/folioView.js":
-/*!************************************!*\
-  !*** ./src/client/js/folioView.js ***!
-  \************************************/
+/***/ "./src/client/js/profileEditSimple.js":
+/*!********************************************!*\
+  !*** ./src/client/js/profileEditSimple.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controls */ \"./src/client/js/controls.js\");\nconsole.log(\"folioView.js\");\n\nvar upFolioImageBtn = document.querySelector(\".folioImageUploadBtn\");\nvar upFolioImageDiv = document.querySelector(\"#folioImageUploadDiv\");\nvar foldingViewUpImage = \"\";\n\nvar handleImage = function handleImage(id) {\n  switch (id) {\n    case \"UploadImage\":\n      if (foldingViewUpImage !== \"UploadImage\") {\n        foldingViewUpImage = \"UploadImage\";\n        upFolioImageDiv.classList.remove(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n      } else {\n        foldingViewUpImage = \"\";\n        upFolioImageDiv.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n      }\n\n      break;\n  }\n\n  ;\n  return;\n};\n\nvar upFolioImageBtnFunc = function upFolioImageBtnFunc() {\n  var id = \"UploadImage\";\n  return handleImage(id);\n};\n\nupFolioImageBtn.addEventListener(\"click\", upFolioImageBtnFunc); // window.onload = () => {\n//     let images = document.querySelectorAll(\".image\");\n//     let imgStack = [0, 0];\n//     let colWidth = 250;\n//     for(let i = 0; i < images.length; i++) {\n//       let minIndex = imgStack.indexOf(Math.min.apply(0, imgStack));\n//       let x = colWidth * minIndex;\n//       let y = imgStack[minIndex];\n//       imgStack[minIndex] += (images[i].children[0].height + 20);\n//       images[i].style.transform = `translateX(${x}px) translateY(${y}px)`;\n//       if(i === images.length - 1) {\n//         document.querySelector(\".images\").style.height = `${Math.max.apply(0, imgStack)}px`;\n//       }\n//     }\n//   }\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/folioView.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controls */ \"./src/client/js/controls.js\");\nconsole.log(\"profileEditSimple.js\"); // using : /template/user/profile.pug\n\n\nvar modifyValueBef = document.querySelector(\"#modifyValueBef\");\nvar modifyDescBtn = document.querySelector(\"#modifyDescBtn\");\nvar modifyInputDiv = document.querySelector(\"#modifyInputDiv\");\nvar modifyValueAft = document.querySelector(\"#modifyValueAft\");\nvar modifyDescCacnel = document.querySelector(\"#modifyDescCacnel\");\nvar folded = true;\n\nvar keyController = function keyController(event) {\n  // console.log(event.target.id);\n  switch (event.target.id) {\n    case (\"modifyValueBef\", \"modifyDescCacnel\"):\n      if (folded === true) {\n        modifyInputDiv.classList.remove(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        modifyValueAft.value = \"\";\n        folded = true;\n      } else {\n        //true\n        modifyInputDiv.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        folded = false;\n      }\n\n      break;\n  }\n\n  ;\n  return;\n};\n\nmodifyDescBtn.addEventListener(\"click\", keyController);\nmodifyDescCacnel.addEventListener(\"click\", keyController);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/profileEditSimple.js?");
 
 /***/ })
 
@@ -90,7 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _con
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/client/js/folioView.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/client/js/profileEditSimple.js");
 /******/ 	
 /******/ })()
 ;

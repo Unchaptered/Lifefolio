@@ -20,13 +20,13 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/client/js/profileFollow.js":
-/*!****************************************!*\
-  !*** ./src/client/js/profileFollow.js ***!
-  \****************************************/
+/***/ "./src/client/js/folioUpload.js":
+/*!**************************************!*\
+  !*** ./src/client/js/folioUpload.js ***!
+  \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controls */ \"./src/client/js/controls.js\");\nconsole.log(\"profileFollow.js\");\n\nvar formFollowing = document.querySelector(\".userProfile__following\");\nvar formFollowed = document.querySelector(\".userProfile__followed\");\nvar formLike = document.querySelector(\".userProfile__like\");\nvar followingViewBtn = document.querySelector(\"#followingViewBtn\");\nvar followedViewBtn = document.querySelector(\"#followedViewBtn\");\nvar likeViewBtn = document.querySelector(\"#likeViewBtn\");\nvar openTarget = \"\";\n\nvar keyController = function keyController(event) {\n  // console.log(event.target.id);\n  switch (event.target.id) {\n    case \"followingViewBtn\":\n      if (openTarget === \"followingViewBtn\") {\n        formFollowing.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        openTarget = \"\";\n      } else {\n        formFollowing.classList.remove(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        openTarget = \"followingViewBtn\";\n      }\n\n      formFollowed.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n      formLike.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n      break;\n\n    case \"followedViewBtn\":\n      if (openTarget === \"followedViewBtn\") {\n        formFollowed.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        openTarget = \"\";\n      } else {\n        formFollowed.classList.remove(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        openTarget = \"followedViewBtn\";\n      }\n\n      formFollowing.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n      formLike.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n      break;\n\n    case \"likeViewBtn\":\n      if (openTarget === \"likeViewBtn\") {\n        formLike.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        openTarget = \"\";\n      } else {\n        formLike.classList.remove(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        openTarget = \"likeViewBtn\";\n      }\n\n      formFollowing.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n      formFollowed.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n      break;\n  }\n\n  ;\n  return;\n};\n\nfollowingViewBtn.addEventListener(\"click\", keyController);\nfollowedViewBtn.addEventListener(\"click\", keyController);\nlikeViewBtn.addEventListener(\"click\", keyController);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/profileFollow.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controls */ \"./src/client/js/controls.js\");\nconsole.log(\"folioUpload.js\");\n // using : folio-upload.pug\n\nvar detailBtn = document.querySelector(\"#access__Detail\");\nvar detailSpace = document.querySelectorAll(\"#access__FolioSpace\");\nvar detailOwned = document.querySelectorAll(\"#access__FolioOwned\");\nvar detailList = document.querySelectorAll(\"#access__FolioList\");\n\nvar keyController = function keyController(event) {\n  // console.log(event.target.id);\n  var id = event.target.id;\n  console.log(detailSpace.className);\n  console.log(detailOwned);\n  console.log(detailList);\n\n  switch (id) {\n    case \"access__Detail\":\n      detailSpace.className = _controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0];\n      detailOwned.className = _controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0];\n      detailList.className = _controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]; // detailOwned.classList.add(Controls[0]);\n      // detailList.classList.add(Controls[0]);\n\n      break;\n  }\n\n  ;\n  return;\n};\n\ndetailBtn.addEventListener(\"click\", keyController);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/folioUpload.js?");
 
 /***/ })
 
@@ -90,7 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _con
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/client/js/profileFollow.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/client/js/folioUpload.js");
 /******/ 	
 /******/ })()
 ;

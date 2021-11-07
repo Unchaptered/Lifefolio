@@ -16,17 +16,17 @@
   \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar Controls = [\"control__display-none\", \"font-600\"];\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Controls);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/controls.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nvar Controls = [\"control-DisplayNone\", \"control-font600\"];\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Controls);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/controls.js?");
 
 /***/ }),
 
-/***/ "./src/client/js/navProfile.js":
-/*!*************************************!*\
-  !*** ./src/client/js/navProfile.js ***!
-  \*************************************/
+/***/ "./src/client/js/folioUloadImage.js":
+/*!******************************************!*\
+  !*** ./src/client/js/folioUloadImage.js ***!
+  \******************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controls */ \"./src/client/js/controls.js\");\nconsole.log(\"navProfile.js\");\n // Btn\n// const unfoldBtn=document.querySelector(\".navProfileBtn__left\");\n// const foldBtn=document.querySelector(\".navProfileBtn__right\");\n// const navProfileBtn=document.querySelector(\".navProfileBtn\");\n// // Profile\n// const navProfile=document.querySelector(\".navProfile\");\n// const unfoldFunc=()=>{\n//     unfoldBtn.classList.add(Controls[0]);\n//     foldBtn.classList.remove(Controls[0]);\n//     navProfile.classList.remove(Controls[0]);\n// };\n// const foldFunc=()=>{\n//     unfoldBtn.classList.remove(Controls[0]);\n//     foldBtn.classList.add(Controls[0]);\n//     navProfile.classList.add(Controls[0]);\n// };\n// unfoldBtn.addEventListener(\"click\", unfoldFunc);\n// foldBtn.addEventListener(\"click\", foldFunc);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/navProfile.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _controls__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./controls */ \"./src/client/js/controls.js\");\nconsole.log(\"folioImageUpload.js\");\n\nvar uploadImageBtn = document.querySelector(\"#navTop__folioImageUpload\");\nvar uploadImageForm = document.querySelector(\"#iamge__upload\");\nvar folded = false;\n\nvar keyController = function keyController(event) {\n  // console.log(event.target.id);\n  var id = event.target.id === \"path\" ? event.target.parentElement.parentElement.id : event.target.id === \"svg\" ? event.target.parentElement.id : event.target.id;\n\n  switch (id) {\n    case \"navTop__folioImageUpload\":\n      if (folded === false) {\n        uploadImageForm.classList.remove(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        folded = true;\n      } else {\n        uploadImageForm.classList.add(_controls__WEBPACK_IMPORTED_MODULE_0__[\"default\"][0]);\n        folded = false;\n      }\n\n      break;\n  }\n\n  ;\n  return;\n};\n\nuploadImageBtn.addEventListener(\"click\", keyController);\n\n//# sourceURL=webpack://project-2021-08-clone-wetube/./src/client/js/folioUloadImage.js?");
 
 /***/ })
 
@@ -90,7 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _con
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/client/js/navProfile.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/client/js/folioUloadImage.js");
 /******/ 	
 /******/ })()
 ;
